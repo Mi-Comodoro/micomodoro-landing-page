@@ -1,21 +1,23 @@
 ---
 const stats = [
-  { value: '45 días', label: 'de prueba Pro gratis', icon: '🎁' },
-  { value: '∞', label: 'transacciones siempre', icon: '♾️' },
-  { value: '0', label: 'conexión bancaria', icon: '🔒' },
-  { value: '3 planes', label: 'uno para cada etapa', icon: '🚀' },
+  { value: '45 dias', label: 'de prueba Pro gratis', icon: 'Trial' },
+  { value: '∞', label: 'transacciones siempre', icon: 'Sin limite' },
+  { value: '0', label: 'conexion bancaria', icon: 'Privado' },
+  { value: '3 planes', label: 'uno para cada etapa', icon: 'Escala' },
 ];
 ---
 
-<section class="bg-primary-950/50 border-y border-white/5 py-8 px-4 sm:px-6">
-  <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
+<section class="bg-primary-950 border-y border-primary-700/40 py-10 px-4 sm:px-6">
+  <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
     {stats.map(s => (
-      <div class="text-center">
-        <div class="text-2xl mb-1">{s.icon}</div>
-        <p class="text-white font-extrabold text-xl sm:text-2xl leading-none mb-1">
+      <div class="rounded-2xl border border-white/10 bg-white/[0.06] px-4 py-5 text-center">
+        <p class="mb-3 inline-flex rounded-full bg-primary-400/15 px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-primary-200">
+          {s.icon}
+        </p>
+        <p class="text-white font-black text-3xl sm:text-4xl leading-none mb-2">
           {s.value}
         </p>
-        <p class="text-white/40 text-xs leading-tight">{s.label}</p>
+        <p class="text-slate-300 text-xs sm:text-sm leading-tight font-medium">{s.label}</p>
       </div>
     ))}
   </div>

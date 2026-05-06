@@ -41,12 +41,12 @@ function openModal(plan: Plan) {
         </p>
         <p class="text-slate-400 text-sm mb-8">Cancelas cuando quieras. Sin permanencia.</p>
 
-        <div class="inline-flex items-center bg-slate-200 rounded-xl p-1 gap-1">
+        <div class="inline-flex items-center bg-slate-300 rounded-xl p-1 gap-1 ring-1 ring-slate-300">
           <button
             @click="cycle = 'monthly'"
             :class="[
-              'px-5 py-2 rounded-lg text-sm font-semibold transition-all',
-              cycle === 'monthly' ? 'bg-white text-slate-900 shadow' : 'text-slate-500 hover:text-slate-700'
+              'px-5 py-2 rounded-lg text-sm font-extrabold transition-all',
+              cycle === 'monthly' ? 'bg-primary-700 text-white shadow' : 'text-slate-700 hover:text-slate-950'
             ]"
           >
             Mensual
@@ -54,12 +54,15 @@ function openModal(plan: Plan) {
           <button
             @click="cycle = 'annual'"
             :class="[
-              'px-5 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2',
-              cycle === 'annual' ? 'bg-white text-slate-900 shadow' : 'text-slate-500 hover:text-slate-700'
+              'px-5 py-2 rounded-lg text-sm font-extrabold transition-all flex items-center gap-2',
+              cycle === 'annual' ? 'bg-primary-700 text-white shadow' : 'text-slate-700 hover:text-slate-950'
             ]"
           >
             Anual
-            <span class="bg-primary-500 text-white text-xs font-bold px-2 py-0.5 rounded-md">
+            <span :class="[
+              'text-xs font-bold px-2 py-0.5 rounded-md',
+              cycle === 'annual' ? 'bg-white text-primary-800' : 'bg-primary-600 text-white'
+            ]">
               −20%
             </span>
           </button>
@@ -132,7 +135,7 @@ function openModal(plan: Plan) {
           <div class="absolute -bottom-8 -right-8 w-36 h-36 bg-primary-400/10 rounded-full blur-2xl pointer-events-none"></div>
 
           <h3 class="text-lg font-extrabold text-white mb-1">Pro</h3>
-          <p class="text-white/40 text-xs mb-5">Sin límites, para los que van en serio</p>
+          <p class="text-slate-300 text-xs mb-5">Sin límites, para los que van en serio</p>
           <div class="mb-1">
             <span class="text-4xl font-extrabold text-white">
               ${{ prices.pro[cycle] }} COP
