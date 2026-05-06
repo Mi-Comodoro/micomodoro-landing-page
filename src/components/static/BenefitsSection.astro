@@ -1,0 +1,64 @@
+---
+const benefits = [
+  {
+    before: '¿Me alcanza para pagar el arriendo y salir este fin de semana?',
+    after:  'Sé exactamente cuánto tengo disponible para gastar hoy.',
+    icon:   '💡',
+  },
+  {
+    before: 'Cada mes digo que voy a ahorrar. Cada mes no lo hago.',
+    after:  'Tengo una meta. Veo el progreso. Y eso me motiva a cumplirla.',
+    icon:   '🎯',
+  },
+  {
+    before: 'Los Excel se me complicaron y lo abandoné a la semana.',
+    after:  'Registro en 30 segundos. Mi Comodoro hace el resto.',
+    icon:   '⚡',
+  },
+];
+---
+
+<section class="py-24 px-4 sm:px-6 bg-slate-50">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="text-center mb-16">
+      <p class="text-primary-600 text-sm font-bold uppercase tracking-widest mb-4">La transformación</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">
+        Lo que cambia cuando empiezas<br class="hidden sm:block"/>
+        a llevar tus finanzas
+      </h2>
+    </div>
+
+    <div class="flex flex-col gap-6">
+      {benefits.map((b) => (
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-4 items-center bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-100">
+
+          <!-- ANTES -->
+          <div class="flex items-start gap-4">
+            <span class="w-8 h-8 rounded-full bg-red-100 text-red-500 flex items-center justify-center text-sm flex-shrink-0 font-bold mt-0.5">✗</span>
+            <div>
+              <p class="text-xs font-bold text-red-400 uppercase tracking-wider mb-1">Antes</p>
+              <p class="text-slate-500 italic text-sm leading-relaxed">"{b.before}"</p>
+            </div>
+          </div>
+
+          <!-- Flecha central -->
+          <div class="hidden md:flex items-center justify-center">
+            <div class="text-2xl">{b.icon}</div>
+          </div>
+
+          <!-- DESPUÉS -->
+          <div class="flex items-start gap-4">
+            <span class="w-8 h-8 rounded-full bg-primary-100 text-primary-600 flex items-center justify-center text-sm flex-shrink-0 font-bold mt-0.5">✓</span>
+            <div>
+              <p class="text-xs font-bold text-primary-500 uppercase tracking-wider mb-1">Después</p>
+              <p class="text-slate-800 font-medium text-sm leading-relaxed">{b.after}</p>
+            </div>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

@@ -3,46 +3,51 @@ import { ref } from 'vue'
 
 defineProps<{ ctaUrl: string }>()
 
-const isOpen = ref(false)
+const open = ref(false)
 
-function toggle() {
-  isOpen.value = !isOpen.value
-}
-
-function close() {
-  isOpen.value = false
-}
+function close() { open.value = false }
 </script>
 
 <template>
   <div class="md:hidden">
     <button
-      @click="toggle"
-      class="p-2 text-slate-600 hover:text-primary-600 transition-colors"
-      aria-label="Abrir menú"
+      @click="open = !open"
+      class="p-2 rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-colors"
+      :aria-label="open ? 'Cerrar menú' : 'Abrir menú'"
     >
-      <svg v-if="!isOpen" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/>
+      <svg v-if="!open" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="3" y1="6" x2="19" y2="6"/>
+        <line x1="3" y1="12" x2="19" y2="12"/>
+        <line x1="3" y1="18" x2="19" y2="18"/>
       </svg>
-      <svg v-else width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round"/>
+      <svg v-else width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="4" y1="4" x2="18" y2="18"/>
+        <line x1="18" y1="4" x2="4" y2="18"/>
       </svg>
     </button>
 
-    <div
-      v-if="isOpen"
-      class="absolute top-16 left-0 right-0 bg-white border-b border-slate-100 shadow-lg px-4 py-4 flex flex-col gap-4"
+    <Transition
+      enter-active-class="transition-all duration-200 ease-out"
+      enter-from-class="opacity-0 -translate-y-2"
+      enter-to-class="opacity-100 translate-y-0"
+      leave-active-class="transition-all duration-150 ease-in"
+      leave-from-class="opacity-100 translate-y-0"
+      leave-to-class="opacity-0 -translate-y-2"
     >
-      <a @click="close" href="#caracteristicas" class="text-sm text-slate-700 font-medium py-2">Características</a>
-      <a @click="close" href="#como-funciona" class="text-sm text-slate-700 font-medium py-2">Cómo funciona</a>
-      <a @click="close" href="#planes" class="text-sm text-slate-700 font-medium py-2">Planes</a>
-      <a
-        @click="close"
-        :href="ctaUrl"
-        class="bg-primary-600 text-white text-sm font-semibold px-4 py-2 rounded-lg text-center"
+      <div
+        v-if="open"
+        class="absolute top-16 left-0 right-0 bg-primary-950/95 backdrop-blur-sm border-t border-white/10 px-6 py-6 flex flex-col gap-5"
       >
-        Empezar gratis
-      </a>
-    </div>
+        <a @click="close" href="#el-problema" class="text-white/80 hover:text-white font-medium text-sm transition-colors">El problema</a>
+        <a @click="close" href="#como-funciona" class="text-white/80 hover:text-white font-medium text-sm transition-colors">Cómo funciona</a>
+        <a @click="close" href="#planes" class="text-white/80 hover:text-white font-medium text-sm transition-colors">Planes</a>
+        <a
+          :href="ctaUrl"
+          class="bg-primary-500 hover:bg-primary-400 text-white font-bold px-5 py-3 rounded-xl text-sm text-center transition-colors"
+        >
+          Empezar gratis →
+        </a>
+      </div>
+    </Transition>
   </div>
 </template>

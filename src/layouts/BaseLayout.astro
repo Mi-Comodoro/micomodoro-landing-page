@@ -1,36 +1,51 @@
 ---
 import '../styles/global.css';
 
-export interface Props {
+interface Props {
   title?: string;
   description?: string;
+  ogImage?: string;
 }
 
 const {
-  title = 'Mi Comodoro — Controla tu dinero, un centavo a la vez',
-  description = 'Mi Comodoro te ayuda a organizar tu presupuesto, registrar tus gastos y construir hábitos financieros sólidos. Sin bancos, sin permisos, solo tú y tu dinero.',
+  title = 'Mi Comodoro — ¿Sabes en qué se va tu dinero?',
+  description = 'Mi Comodoro es tu registro personal de finanzas. Sin bancos, sin complicaciones. Organiza tu presupuesto, define metas de ahorro y lleva el control de cada centavo.',
+  ogImage = '/og-image.png',
 } = Astro.props;
 
 const siteUrl = import.meta.env.PUBLIC_SITE_URL ?? 'https://micomodoro.com';
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0d9488" />
+
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={siteUrl} />
+
+    <!-- OG / Social -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={siteUrl} />
+    <meta property="og:image" content={`${siteUrl}${ogImage}`} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
+
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
-  <body>
+  <body class="bg-white text-slate-900 antialiased">
     <slot />
   </body>
 </html>

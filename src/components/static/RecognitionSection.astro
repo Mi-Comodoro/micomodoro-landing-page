@@ -1,0 +1,51 @@
+---
+const pains = [
+  {
+    emoji: '😤',
+    color: 'border-red-500/30 bg-red-950/20',
+    textColor: 'text-red-300',
+    quote: '"Reviso mi cuenta y me pregunto en qué gasté el sueldo."',
+  },
+  {
+    emoji: '😩',
+    color: 'border-amber-500/30 bg-amber-950/20',
+    textColor: 'text-amber-300',
+    quote: '"Empiezo a ahorrar, pero siempre aparece algo que me lo come."',
+  },
+  {
+    emoji: '😶',
+    color: 'border-primary-500/30 bg-primary-950/20',
+    textColor: 'text-primary-300',
+    quote: '"Quiero organizar mis finanzas pero no sé por dónde empezar."',
+  },
+];
+---
+
+<section id="el-problema" class="py-24 px-4 sm:px-6 bg-slate-950">
+  <div class="max-w-4xl mx-auto text-center">
+
+    <p class="text-primary-400 text-sm font-bold uppercase tracking-widest mb-4">El problema</p>
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-16">
+      Suena familiar...
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-16">
+      {pains.map((p) => (
+        <div class={`rounded-2xl border p-7 text-left ${p.color}`}>
+          <div class="text-3xl mb-4">{p.emoji}</div>
+          <p class={`text-base font-medium italic leading-relaxed ${p.textColor}`}>
+            {p.quote}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <div class="max-w-xl mx-auto">
+      <p class="text-white/50 text-base leading-relaxed">
+        Si te identificaste con alguna de estas,
+        <span class="text-white font-semibold"> no estás solo. Y tiene solución.</span>
+      </p>
+    </div>
+
+  </div>
+</section>
