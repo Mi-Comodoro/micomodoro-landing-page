@@ -1,0 +1,155 @@
+---
+---
+
+<section class="hero" role="region" aria-label="Sección principal">
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        Bienvenido a <span class="highlight">Mi Comodoro</span>
+      </h1>
+      
+      <p class="hero-subtitle">
+        La landing page que te ayudará a mostrar tu producto de la mejor manera. Construida con Astro para máxima performance.
+      </p>
+      
+      <div class="hero-cta">
+        <button class="cta-primary" aria-label="Comenzar ahora">
+          Comenzar Ahora
+        </button>
+        <button class="cta-secondary" aria-label="Ver más información">
+          Más Información
+        </button>
+      </div>
+    </div>
+    
+    <div class="hero-visual">
+      <div class="hero-image-placeholder" aria-hidden="true">
+        <span>Tu imagen aquí</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    width: 100%;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.2;
+    color: var(--color-text);
+  }
+
+  .highlight {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    line-height: 1.8;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .cta-primary,
+  .cta-secondary {
+    padding: 0.875rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+  }
+
+  .cta-primary {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: white;
+  }
+
+  .cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+  }
+
+  .cta-secondary {
+    background: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+  }
+
+  .cta-secondary:hover {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-image-placeholder {
+    width: 100%;
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 600;
+    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 2rem 1rem;
+      min-height: auto;
+    }
+
+    .hero-container {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .hero-cta {
+      flex-direction: column;
+    }
+
+    .cta-primary,
+    .cta-secondary {
+      width: 100%;
+    }
+  }
+</style>
