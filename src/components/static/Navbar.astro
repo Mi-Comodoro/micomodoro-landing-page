@@ -1,0 +1,36 @@
+---
+import MobileMenu from '../islands/MobileMenu.vue';
+
+const appUrl = import.meta.env.PUBLIC_APP_URL ?? 'https://app.micomodoro.com';
+const ctaUrl = `${appUrl}/auth?plan=free&ref=landing`;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-slate-100">
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2 font-extrabold text-xl text-primary-700">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14" cy="14" r="13" stroke="#0d9488" stroke-width="2"/>
+        <path d="M14 6 L14 14 L20 14" stroke="#0d9488" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="14" cy="14" r="2" fill="#0d9488"/>
+      </svg>
+      Mi Comodoro
+    </a>
+
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#caracteristicas" class="text-sm text-slate-600 hover:text-primary-600 transition-colors">Características</a>
+      <a href="#como-funciona" class="text-sm text-slate-600 hover:text-primary-600 transition-colors">Cómo funciona</a>
+      <a href="#planes" class="text-sm text-slate-600 hover:text-primary-600 transition-colors">Planes</a>
+    </div>
+
+    <div class="hidden md:flex items-center gap-3">
+      <a
+        href={ctaUrl}
+        class="bg-primary-600 hover:bg-primary-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors"
+      >
+        Empezar gratis
+      </a>
+    </div>
+
+    <MobileMenu ctaUrl={ctaUrl} client:load />
+  </nav>
+</header>

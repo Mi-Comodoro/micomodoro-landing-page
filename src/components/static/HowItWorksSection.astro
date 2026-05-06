@@ -1,0 +1,38 @@
+---
+const steps = [
+  {
+    number: '01',
+    title: 'Crea tu cuenta',
+    desc: 'Login con Google, gratis y en segundos.',
+  },
+  {
+    number: '02',
+    title: 'Configura tu presupuesto',
+    desc: 'Dinos cómo recibes tu dinero y elige tu estrategia.',
+  },
+  {
+    number: '03',
+    title: 'Registra y controla',
+    desc: 'Cada gasto cuenta. Cada centavo importa.',
+  },
+];
+---
+
+<section id="como-funciona" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-14">
+      <h2 class="text-3xl font-extrabold text-slate-900 mb-4">Empieza en 3 pasos</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {steps.map((step) => (
+        <div class="text-center">
+          <div class="w-14 h-14 bg-primary-600 text-white rounded-2xl flex items-center justify-center text-xl font-extrabold mx-auto mb-4">
+            {step.number}
+          </div>
+          <h3 class="font-bold text-slate-900 mb-2">{step.title}</h3>
+          <p class="text-sm text-slate-500">{step.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
