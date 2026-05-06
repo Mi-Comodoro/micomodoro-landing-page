@@ -1,0 +1,54 @@
+---
+const pains = [
+  {
+    marker: '01',
+    color: 'border-red-400/60 bg-red-950/35',
+    markerClass: 'bg-red-400 text-red-950',
+    textColor: 'text-red-100',
+    quote: '"Reviso mi cuenta y me pregunto en que gaste el sueldo."',
+  },
+  {
+    marker: '02',
+    color: 'border-amber-300/60 bg-amber-950/35',
+    markerClass: 'bg-amber-300 text-amber-950',
+    textColor: 'text-amber-100',
+    quote: '"Empiezo a ahorrar, pero siempre aparece algo que me lo come."',
+  },
+  {
+    marker: '03',
+    color: 'border-primary-300/70 bg-primary-950/45 shadow-lg shadow-primary-950/30',
+    markerClass: 'bg-primary-300 text-primary-950',
+    textColor: 'text-primary-50',
+    quote: '"Quiero organizar mis finanzas pero no se por donde empezar."',
+  },
+];
+---
+
+<section id="el-problema" class="py-24 px-4 sm:px-6 bg-slate-950">
+  <div class="max-w-4xl mx-auto text-center">
+    <p class="text-primary-300 text-sm font-bold uppercase tracking-widest mb-4">El problema</p>
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-16">
+      Suena familiar...
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-16">
+      {pains.map((p) => (
+        <div class={`min-h-44 rounded-2xl border p-7 text-left ${p.color}`}>
+          <div class={`inline-flex h-9 w-9 items-center justify-center rounded-full text-sm font-extrabold mb-5 ${p.markerClass}`}>
+            {p.marker}
+          </div>
+          <p class={`text-base font-semibold italic leading-relaxed ${p.textColor}`}>
+            {p.quote}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <div class="max-w-xl mx-auto">
+      <p class="text-slate-300 text-base leading-relaxed">
+        Si te identificaste con alguna de estas,
+        <span class="text-white font-semibold"> no estas solo. Y tiene solucion.</span>
+      </p>
+    </div>
+  </div>
+</section>

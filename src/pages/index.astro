@@ -1,25 +1,34 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
-import Features from '../components/Features.astro';
-import HowItWorks from '../components/HowItWorks.astro';
-import Pricing from '../components/Pricing.astro';
-import ContactCta from '../components/ContactCta.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout         from '../layouts/BaseLayout.astro';
+import Navbar             from '../components/static/Navbar.astro';
+import HeroSection        from '../components/static/HeroSection.astro';
+import StatsBand          from '../components/static/StatsBand.astro';
+import RecognitionSection from '../components/static/RecognitionSection.astro';
+import SolutionSection    from '../components/static/SolutionSection.astro';
+import BenefitsSection    from '../components/static/BenefitsSection.astro';
+import HowItWorksSection  from '../components/static/HowItWorksSection.astro';
+import AppShowcase        from '../components/static/AppShowcase.astro';
+import SocialProofSection from '../components/static/SocialProofSection.astro';
+import PricingSection     from '../components/islands/PricingSection.vue';
+import CtaFinalSection    from '../components/static/CtaFinalSection.astro';
+import FooterSection      from '../components/static/FooterSection.astro';
+
+const appUrl = import.meta.env.PUBLIC_APP_URL ?? 'https://app.micomodoro.com';
 ---
 
-<BaseLayout
-  title="Mi Comodoro | Finanzas personales simples"
-  description="Organiza ingresos, gastos, presupuesto y metas de ahorro con Mi Comodoro, una app de finanzas personales clara y facil de usar."
->
-  <Header />
+<BaseLayout>
+  <Navbar />
   <main>
-    <Hero />
-    <Features />
-    <HowItWorks />
-    <Pricing />
-    <ContactCta />
+    <HeroSection />
+    <StatsBand />
+    <RecognitionSection />
+    <SolutionSection />
+    <BenefitsSection />
+    <HowItWorksSection />
+    <AppShowcase />
+    <SocialProofSection />
+    <PricingSection appUrl={appUrl} client:load />
+    <CtaFinalSection />
   </main>
-  <Footer />
+  <FooterSection />
 </BaseLayout>

@@ -1,0 +1,100 @@
+---
+const features = [
+  { label: 'Presupuesto visual', value: '50/30/20' },
+  { label: 'Metas de ahorro', value: '3 activas' },
+  { label: 'Analitica clara', value: 'Score 73' },
+  { label: 'Control de gastos', value: 'En rango' },
+];
+
+const categories = [
+  { name: 'Necesidades', amount: '$2.100.000', pct: 50, color: '#0d9488' },
+  { name: 'Gustos', amount: '$1.260.000', pct: 30, color: '#8b5cf6' },
+  { name: 'Ahorro', amount: '$840.000', pct: 20, color: '#f59e0b' },
+];
+---
+
+<section class="py-24 px-4 sm:px-6 bg-white">
+  <div class="max-w-5xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <p class="text-primary-600 text-sm font-bold uppercase tracking-widest mb-4">La solucion</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-6 leading-tight">
+          Conoce<br/>
+          <span class="text-primary-600">Mi Comodoro</span>
+        </h2>
+        <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+          Tu registro personal de finanzas.<br/>
+          Sin jerga financiera. Sin conexion a bancos.<br/>
+          <strong class="text-slate-800">Sin excusas para no empezar.</strong>
+        </p>
+
+        <div class="flex flex-wrap gap-3 mb-10">
+          {features.map((f) => (
+            <span class="flex items-center gap-2 bg-slate-100 text-slate-800 text-sm font-semibold px-4 py-2 rounded-full">
+              <strong class="text-primary-700">{f.value}</strong>{f.label}
+            </span>
+          ))}
+        </div>
+
+        <div class="bg-primary-50 border border-primary-100 rounded-xl p-4">
+          <p class="text-sm text-primary-900 leading-relaxed">
+            <span class="font-bold">Privacidad por diseno.</span><br/>
+            Tu informacion no sale de tu cuenta. No accedemos a tus bancos.
+            No vendemos tus datos. Tu decides que registras.
+          </p>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border border-slate-200 bg-slate-950 p-5 shadow-2xl shadow-slate-200">
+        <div class="mb-5 flex items-center justify-between">
+          <div>
+            <p class="text-slate-400 text-xs">Presupuesto mensual</p>
+            <p class="text-white text-lg font-extrabold">Mayo 2026</p>
+          </div>
+          <span class="rounded-full bg-primary-500/15 px-3 py-1 text-xs font-bold text-primary-200">
+            Activo
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-5 items-center">
+          <svg width="120" height="120" viewBox="0 0 120 120" class="mx-auto">
+            <circle cx="60" cy="60" r="38" fill="none" stroke="#0d9488" stroke-width="18" stroke-dasharray="119.4 238.8" transform="rotate(-90 60 60)"/>
+            <circle cx="60" cy="60" r="38" fill="none" stroke="#8b5cf6" stroke-width="18" stroke-dasharray="71.6 238.8" stroke-dashoffset="-119.4" transform="rotate(-90 60 60)"/>
+            <circle cx="60" cy="60" r="38" fill="none" stroke="#f59e0b" stroke-width="18" stroke-dasharray="47.8 238.8" stroke-dashoffset="-191" transform="rotate(-90 60 60)"/>
+            <text x="60" y="57" text-anchor="middle" fill="#fff" font-size="16" font-weight="800">4.2M</text>
+            <text x="60" y="73" text-anchor="middle" fill="#cbd5e1" font-size="9">ingresos</text>
+          </svg>
+
+          <div class="space-y-3">
+            {categories.map((item) => (
+              <div>
+                <div class="mb-1 flex justify-between gap-3 text-xs">
+                  <span class="font-semibold text-slate-200">{item.name}</span>
+                  <span class="font-bold" style={`color:${item.color}`}>{item.amount}</span>
+                </div>
+                <div class="h-2 overflow-hidden rounded-full bg-slate-800">
+                  <div class="h-full rounded-full" style={`width:${item.pct}%;background:${item.color}`}></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="mt-5 grid grid-cols-3 gap-2">
+          <div class="rounded-xl bg-slate-900 p-3">
+            <p class="text-slate-400 text-[10px]">Disponible</p>
+            <p class="text-primary-300 text-sm font-extrabold">$510k</p>
+          </div>
+          <div class="rounded-xl bg-slate-900 p-3">
+            <p class="text-slate-400 text-[10px]">Ahorro</p>
+            <p class="text-amber-300 text-sm font-extrabold">20%</p>
+          </div>
+          <div class="rounded-xl bg-slate-900 p-3">
+            <p class="text-slate-400 text-[10px]">Score</p>
+            <p class="text-violet-300 text-sm font-extrabold">73</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

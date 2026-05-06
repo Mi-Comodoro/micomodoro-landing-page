@@ -1,0 +1,64 @@
+---
+const steps = [
+  {
+    n: '01',
+    title: 'Crea tu cuenta gratis',
+    desc: 'Solo necesitas tu cuenta de Google. Sin formularios largos. Sin verificaciones tediosas.',
+    note: null,
+  },
+  {
+    n: '02',
+    title: 'Cuéntanos cómo manejas tu dinero',
+    desc: '¿Empleado? ¿Independiente? ¿Ingresos variables? Nos adaptamos a ti, no al revés.',
+    note: null,
+  },
+  {
+    n: '03',
+    title: 'Elige tu estrategia de presupuesto',
+    desc: 'Te recomendamos la que más te conviene. Tú decides cuánto va a necesidades, gustos y ahorro.',
+    note: null,
+  },
+  {
+    n: '04',
+    title: 'Registra y toma el control',
+    desc: 'Cada centavo que entra o sale. Cada meta que construyes. Todo en un solo lugar, siempre visible.',
+    note: null,
+  },
+];
+---
+
+<section id="como-funciona" class="py-24 px-4 sm:px-6 bg-white">
+  <div class="max-w-4xl mx-auto">
+
+    <div class="text-center mb-16">
+      <p class="text-primary-600 text-sm font-bold uppercase tracking-widest mb-4">El proceso</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-3">
+        Listo en 10 minutos.
+        <span class="text-primary-600"> En serio.</span>
+      </h2>
+      <p class="text-slate-400 text-base">Sin tutoriales. Sin configuraciones complicadas.</p>
+    </div>
+
+    <div class="relative">
+      <!-- Línea vertical conectora (solo desktop) -->
+      <div class="hidden md:block absolute left-[2.25rem] top-10 bottom-10 w-0.5 bg-primary-100"></div>
+
+      <div class="flex flex-col gap-8">
+        {steps.map((step) => (
+          <div class="flex items-start gap-6">
+            <!-- Número -->
+            <div class="flex-shrink-0 w-[4.5rem] h-[4.5rem] bg-primary-600 text-white rounded-2xl flex items-center justify-center font-extrabold text-lg shadow-lg shadow-primary-200 relative z-10">
+              {step.n}
+            </div>
+            <!-- Contenido -->
+            <div class="pt-3">
+              <h3 class="font-bold text-slate-900 text-lg mb-1">{step.title}</h3>
+              <p class="text-slate-500 text-sm leading-relaxed">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>

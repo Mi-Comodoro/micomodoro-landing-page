@@ -1,0 +1,46 @@
+---
+const features = [
+  {
+    icon: '💰',
+    title: 'Presupuesto Inteligente',
+    desc: 'Organiza tus gastos con la estrategia 50/30/20 o crea la tuya.',
+  },
+  {
+    icon: '🎯',
+    title: 'Metas de Ahorro',
+    desc: 'Define metas, haz seguimiento y proyecta cuándo las alcanzarás.',
+  },
+  {
+    icon: '📊',
+    title: 'Analítica Clara',
+    desc: 'Visualiza en qué usas tu dinero cada mes, sin tecnicismos.',
+  },
+  {
+    icon: '🔒',
+    title: 'Tu Información es Tuya',
+    desc: 'No conectamos bancos ni accedemos a tus cuentas. Registro 100% manual.',
+  },
+];
+---
+
+<section id="caracteristicas" class="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <h2 class="text-3xl font-extrabold text-slate-900 mb-4">
+        Todo lo que necesitas para ordenar tus finanzas
+      </h2>
+      <p class="text-slate-500 max-w-xl mx-auto">
+        Diseñado para personas que quieren claridad financiera sin complicaciones.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {features.map((f) => (
+        <div class="bg-slate-50 rounded-2xl p-6 hover:shadow-md transition-shadow">
+          <div class="text-3xl mb-4">{f.icon}</div>
+          <h3 class="font-bold text-slate-900 mb-2">{f.title}</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">{f.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

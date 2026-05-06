@@ -1,0 +1,64 @@
+---
+const testimonials = [
+  {
+    quote: 'Por primera vez en años sé exactamente cuánto puedo gastar sin sentirme culpable.',
+    name: 'Laura M.',
+    role: 'Diseñadora freelance',
+    initial: 'L',
+    color: 'bg-violet-500',
+  },
+  {
+    quote: 'Lo intenté con Excel, con otras apps, con sobres de efectivo. Esto es lo único que me ha funcionado.',
+    name: 'Carlos R.',
+    role: 'Empleado · Medellín',
+    initial: 'C',
+    color: 'bg-primary-600',
+  },
+  {
+    quote: 'No tengo ingresos fijos y siempre pensé que los presupuestos no eran para mí. Me equivoqué.',
+    name: 'Andrea V.',
+    role: 'Emprendedora',
+    initial: 'A',
+    color: 'bg-rose-500',
+  },
+];
+---
+
+<section class="py-24 px-4 sm:px-6 bg-slate-950">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="text-center mb-16">
+      <p class="text-primary-400 text-sm font-bold uppercase tracking-widest mb-4">Lo que dicen</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">
+        Personas reales. Resultados reales.
+      </h2>
+      <p class="text-slate-300 text-sm max-w-sm mx-auto">
+        Estamos en beta. Eso significa que creces con nosotros
+        y tienes acceso a todo antes que los demás.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {testimonials.map((t) => (
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-7 flex flex-col gap-5">
+          <!-- Quote -->
+          <div class="text-primary-400 text-3xl font-serif leading-none">"</div>
+          <p class="text-white/80 text-sm leading-relaxed italic flex-1">
+            {t.quote}
+          </p>
+          <!-- Author -->
+          <div class="flex items-center gap-3 pt-2 border-t border-white/10">
+            <div class={`w-9 h-9 ${t.color} rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0`}>
+              {t.initial}
+            </div>
+            <div>
+              <p class="text-white text-sm font-semibold">{t.name}</p>
+              <p class="text-slate-400 text-xs">{t.role}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
