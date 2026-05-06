@@ -1,131 +1,61 @@
 ---
+const year = new Date().getFullYear();
 ---
 
-<footer role="contentinfo" class="footer">
-  <div class="footer-container">
-    <div class="footer-section">
-      <h3 class="footer-title">Mi Comodoro</h3>
-      <p class="footer-description">
-        Landing page oficial creada con Astro para máxima performance y experiencia del usuario.
-      </p>
-    </div>
-
-    <div class="footer-section">
-      <h4 class="footer-subtitle">Enlaces</h4>
-      <ul class="footer-links">
-        <li><a href="#features">Características</a></li>
-        <li><a href="#pricing">Precios</a></li>
-        <li><a href="#contact">Contacto</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-section">
-      <h4 class="footer-subtitle">Legal</h4>
-      <ul class="footer-links">
-        <li><a href="/privacy">Privacidad</a></li>
-        <li><a href="/terms">Términos</a></li>
-        <li><a href="/cookies">Cookies</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-section">
-      <h4 class="footer-subtitle">Redes Sociales</h4>
-      <ul class="footer-links">
-        <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a></li>
-        <li><a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-        <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    <p class="footer-copyright">
-      &copy; 2026 Mi Comodoro. Todos los derechos reservados.
-    </p>
+<footer class="footer">
+  <div class="container footer-inner">
+    <a class="brand" href="/" aria-label="Mi Comodoro, inicio">
+      <span class="brand-mark" aria-hidden="true">MC</span>
+      <span>Mi Comodoro</span>
+    </a>
+    <p>Construido con Astro para una experiencia rapida, accesible y facil de mantener.</p>
+    <small>&copy; {year} Mi Comodoro. Todos los derechos reservados.</small>
   </div>
 </footer>
 
 <style>
   .footer {
-    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-    color: #f3f4f6;
-    padding: 3rem 2rem;
+    border-top: 1px solid var(--color-border);
+    background: #ffffff;
+    padding-block: 30px;
   }
 
-  .footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 900;
+  }
+
+  .brand-mark {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
+    width: 36px;
+    height: 36px;
+    place-items: center;
+    border-radius: 8px;
+    background: var(--color-brand-dark);
+    color: #fff;
+    font-size: 0.78rem;
   }
 
-  .footer-section {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  .footer p,
+  .footer small {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 0.92rem;
   }
 
-  .footer-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, #6366f1 0%, #a78bfa 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .footer-description {
-    color: #d1d5db;
-    line-height: 1.6;
-    font-size: 0.95rem;
-  }
-
-  .footer-subtitle {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: #ffffff;
-  }
-
-  .footer-links {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .footer-links a {
-    color: #d1d5db;
-    transition: color 0.3s ease;
-    font-size: 0.95rem;
-  }
-
-  .footer-links a:hover {
-    color: #6366f1;
-  }
-
-  .footer-bottom {
-    border-top: 1px solid #374151;
-    padding-top: 2rem;
-    text-align: center;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .footer-copyright {
-    color: #9ca3af;
-    font-size: 0.9rem;
-  }
-
-  @media (max-width: 768px) {
-    .footer {
-      padding: 2rem 1rem;
-    }
-
-    .footer-container {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
+  @media (max-width: 780px) {
+    .footer-inner {
+      align-items: flex-start;
+      flex-direction: column;
     }
   }
 </style>

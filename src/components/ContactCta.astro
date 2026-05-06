@@ -1,0 +1,95 @@
+---
+---
+
+<section class="contact" id="contacto">
+  <div class="container contact-inner">
+    <div>
+      <p class="eyebrow">Proxima apertura</p>
+      <h2>Recibe novedades de Mi Comodoro.</h2>
+      <p>
+        Deja tu correo y te avisaremos cuando abramos nuevos cupos para probar la beta.
+      </p>
+    </div>
+
+    <form class="signup-form" name="early-access" method="post">
+      <label for="email">Correo electronico</label>
+      <div>
+        <input id="email" name="email" type="email" placeholder="tu@email.com" autocomplete="email" required />
+        <button class="button button-primary" type="submit">Unirme</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<style>
+  .contact {
+    padding-block: 72px;
+    background: var(--color-brand-dark);
+    color: #ffffff;
+  }
+
+  .contact .eyebrow {
+    color: #9fe4c2;
+  }
+
+  .contact-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.8fr);
+    gap: 36px;
+    align-items: center;
+  }
+
+  .contact h2 {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.06;
+  }
+
+  .contact p:not(.eyebrow) {
+    max-width: 620px;
+    color: rgb(255 255 255 / 76%);
+    line-height: 1.75;
+  }
+
+  .signup-form {
+    display: grid;
+    gap: 10px;
+  }
+
+  .signup-form label {
+    color: rgb(255 255 255 / 78%);
+    font-size: 0.9rem;
+    font-weight: 800;
+  }
+
+  .signup-form div {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+  }
+
+  .signup-form input {
+    min-width: 0;
+    min-height: 52px;
+    border: 1px solid rgb(255 255 255 / 18%);
+    border-radius: 8px;
+    background: rgb(255 255 255 / 10%);
+    color: #ffffff;
+    padding: 0 16px;
+  }
+
+  .signup-form input::placeholder {
+    color: rgb(255 255 255 / 48%);
+  }
+
+  .signup-form .button {
+    background: var(--color-accent);
+  }
+
+  @media (max-width: 780px) {
+    .contact-inner,
+    .signup-form div {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

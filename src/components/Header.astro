@@ -1,128 +1,101 @@
 ---
+const navItems = [
+  { label: 'Beneficios', href: '#beneficios' },
+  { label: 'Como funciona', href: '#como-funciona' },
+  { label: 'Precios', href: '#precios' },
+];
 ---
 
-<header role="banner" class="header">
-  <div class="header-container">
-    <a href="/" class="logo" aria-label="Mi Comodoro - Inicio">
-      <span class="logo-text">Mi Comodoro</span>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="Mi Comodoro, inicio">
+      <span class="brand-mark" aria-hidden="true">MC</span>
+      <span>Mi Comodoro</span>
     </a>
-    
-    <nav class="navigation" role="navigation" aria-label="Navegación principal">
-      <ul class="nav-list">
-        <li><a href="#features" class="nav-link">Características</a></li>
-        <li><a href="#pricing" class="nav-link">Precios</a></li>
-        <li><a href="#contact" class="nav-link">Contacto</a></li>
-      </ul>
+
+    <nav class="nav" aria-label="Navegacion principal">
+      {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
     </nav>
 
-    <button class="cta-button" aria-label="Comenzar ahora">
-      Comenzar
-    </button>
+    <a class="button button-primary header-cta" href="#contacto">Solicitar acceso</a>
   </div>
 </header>
 
 <style>
-  .header {
-    background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
-    border-bottom: 1px solid var(--color-border);
+  .site-header {
     position: sticky;
     top: 0;
-    z-index: 100;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    z-index: 20;
+    border-bottom: 1px solid rgb(223 232 225 / 80%);
+    background: rgb(251 253 251 / 88%);
+    backdrop-filter: blur(16px);
   }
 
-  .header-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem 2rem;
+  .header-inner {
     display: flex;
-    justify-content: space-between;
+    min-height: 76px;
     align-items: center;
+    justify-content: space-between;
+    gap: 24px;
   }
 
-  .logo {
-    font-size: 1.5rem;
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 900;
+  }
+
+  .brand-mark {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    border-radius: 8px;
+    background: var(--color-brand-dark);
+    color: #fff;
+    font-size: 0.82rem;
+    letter-spacing: 0;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .nav a {
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: var(--color-muted);
+    font-size: 0.95rem;
     font-weight: 700;
-    color: var(--color-primary);
-    transition: transform 0.3s ease;
   }
 
-  .logo:hover {
-    transform: scale(1.05);
+  .nav a:hover {
+    background: var(--color-soft);
+    color: var(--color-brand-dark);
   }
 
-  .logo-text {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  @media (max-width: 820px) {
+    .nav {
+      display: none;
+    }
   }
 
-  .navigation {
-    display: flex;
-    gap: 2rem;
-  }
-
-  .nav-list {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-  }
-
-  .nav-link {
-    color: var(--color-text);
-    font-weight: 500;
-    position: relative;
-    transition: color 0.3s ease;
-  }
-
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--color-primary);
-    transition: width 0.3s ease;
-  }
-
-  .nav-link:hover::after {
-    width: 100%;
-  }
-
-  .cta-button {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
-  }
-
-  .cta-button:active {
-    transform: translateY(0);
-  }
-
-  @media (max-width: 768px) {
-    .header-container {
-      padding: 1rem;
-      flex-wrap: wrap;
+  @media (max-width: 520px) {
+    .header-inner {
+      min-height: 68px;
     }
 
-    .navigation {
+    .brand span:last-child {
       display: none;
     }
 
-    .cta-button {
-      order: -1;
+    .header-cta {
+      min-height: 42px;
+      padding-inline: 14px;
+      font-size: 0.9rem;
     }
   }
 </style>

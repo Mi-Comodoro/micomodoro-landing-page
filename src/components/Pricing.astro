@@ -1,0 +1,104 @@
+---
+---
+
+<section class="section pricing" id="precios">
+  <div class="container pricing-inner">
+    <div class="pricing-copy">
+      <p class="eyebrow">Acceso temprano</p>
+      <h2>Empieza gratis mientras construimos la primera version publica.</h2>
+      <p>
+        Estamos validando el producto con usuarios que quieren ordenar sus finanzas personales sin complejidad. Tu feedback ayuda a decidir que entra primero.
+      </p>
+    </div>
+
+    <aside class="price-card" aria-label="Plan de acceso temprano">
+      <p>Plan beta</p>
+      <strong>$0</strong>
+      <span>Durante el acceso temprano</span>
+      <ul>
+        <li>Presupuesto mensual</li>
+        <li>Seguimiento de gastos y ahorros</li>
+        <li>Resumen historico</li>
+      </ul>
+      <a class="button button-primary" href="#contacto">Reservar cupo</a>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .pricing {
+    background: #ffffff;
+  }
+
+  .pricing-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 36px;
+    align-items: center;
+  }
+
+  .pricing-copy h2 {
+    max-width: 720px;
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 3.35rem);
+    line-height: 1.06;
+  }
+
+  .pricing-copy p:last-child {
+    max-width: 660px;
+    color: var(--color-muted);
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  .price-card {
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 26px;
+    background: var(--color-brand-dark);
+    color: #ffffff;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .price-card p,
+  .price-card span {
+    margin: 0;
+    color: rgb(255 255 255 / 76%);
+  }
+
+  .price-card strong {
+    display: block;
+    margin: 12px 0 6px;
+    font-size: 4rem;
+    line-height: 1;
+  }
+
+  .price-card ul {
+    display: grid;
+    gap: 12px;
+    margin: 28px 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .price-card li {
+    border-bottom: 1px solid rgb(255 255 255 / 15%);
+    padding-bottom: 12px;
+  }
+
+  .price-card .button {
+    width: 100%;
+    background: #ffffff;
+    color: var(--color-brand-dark);
+  }
+
+  @media (max-width: 820px) {
+    .pricing-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .price-card {
+      width: min(100%, 420px);
+    }
+  }
+</style>

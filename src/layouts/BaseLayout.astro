@@ -1,0 +1,184 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+}
+
+const {
+  title,
+  description,
+  image = '/og-image.svg',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#12372a" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --color-ink: #13201b;
+    --color-muted: #5d6b63;
+    --color-soft: #f3f7f2;
+    --color-surface: #ffffff;
+    --color-brand: #176b4c;
+    --color-brand-dark: #12372a;
+    --color-accent: #f26f4f;
+    --color-sky: #e8f3ff;
+    --color-border: #dfe8e1;
+    --shadow-soft: 0 20px 60px rgb(18 55 42 / 12%);
+    --container: min(1120px, calc(100% - 32px));
+    font-family:
+      Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: #fbfdfb;
+    color: var(--color-ink);
+    text-rendering: optimizeLegibility;
+  }
+
+  body,
+  button,
+  input {
+    font: inherit;
+  }
+
+  img,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  :focus-visible {
+    outline: 3px solid rgb(242 111 79 / 55%);
+    outline-offset: 3px;
+  }
+
+  .container {
+    width: var(--container);
+    margin-inline: auto;
+  }
+
+  .eyebrow {
+    margin: 0 0 12px;
+    color: var(--color-brand);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .section {
+    padding-block: 88px;
+  }
+
+  .section-header {
+    max-width: 680px;
+    margin-bottom: 36px;
+  }
+
+  .section-header h2 {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 3.15rem);
+    line-height: 1.05;
+    letter-spacing: 0;
+  }
+
+  .section-header p {
+    margin: 16px 0 0;
+    color: var(--color-muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .button {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 0 18px;
+    font-weight: 800;
+    line-height: 1;
+    transition:
+      transform 180ms ease,
+      border-color 180ms ease,
+      background 180ms ease,
+      color 180ms ease;
+  }
+
+  .button:hover {
+    transform: translateY(-1px);
+  }
+
+  .button-primary {
+    background: var(--color-brand-dark);
+    color: #ffffff;
+  }
+
+  .button-secondary {
+    border-color: var(--color-border);
+    background: #ffffff;
+    color: var(--color-brand-dark);
+  }
+
+  @media (max-width: 760px) {
+    .section {
+      padding-block: 64px;
+    }
+
+    .section-header {
+      margin-bottom: 28px;
+    }
+  }
+ </style>

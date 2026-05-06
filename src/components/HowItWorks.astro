@@ -1,0 +1,94 @@
+---
+const steps = [
+  ['Registra tu punto de partida', 'Ingresa ingresos, gastos recurrentes y compromisos del mes.'],
+  ['Planea con prioridades', 'Define limites por categoria y separa dinero para metas importantes.'],
+  ['Revisa avances', 'Consulta alertas y resumenes para ajustar antes de que sea tarde.'],
+];
+---
+
+<section class="section flow" id="como-funciona">
+  <div class="container flow-grid">
+    <div class="section-header">
+      <p class="eyebrow">Como funciona</p>
+      <h2>De la intencion al habito en tres pasos.</h2>
+      <p>
+        La experiencia esta pensada para mantener el foco: pocos campos, informacion util y acciones que puedes repetir cada semana.
+      </p>
+    </div>
+
+    <div class="steps">
+      {steps.map(([title, copy], index) => (
+        <article>
+          <span>{index + 1}</span>
+          <div>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .flow {
+    background: var(--color-soft);
+  }
+
+  .flow-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .steps {
+    display: grid;
+    gap: 14px;
+  }
+
+  .steps article {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 18px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 22px;
+    background: #ffffff;
+  }
+
+  .steps span {
+    display: grid;
+    width: 52px;
+    height: 52px;
+    place-items: center;
+    border-radius: 8px;
+    background: var(--color-brand);
+    color: #ffffff;
+    font-weight: 900;
+  }
+
+  .steps h3,
+  .steps p {
+    margin: 0;
+  }
+
+  .steps p {
+    margin-top: 8px;
+    color: var(--color-muted);
+    line-height: 1.65;
+  }
+
+  @media (max-width: 860px) {
+    .flow-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .steps article {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

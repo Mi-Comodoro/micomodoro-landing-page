@@ -2,11 +2,24 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
+import Features from '../components/Features.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Pricing from '../components/Pricing.astro';
+import ContactCta from '../components/ContactCta.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<BaseLayout title="Mi Comodoro - Landing Page" description="Bienvenido a Mi Comodoro, tu landing page oficial">
+<BaseLayout
+  title="Mi Comodoro | Finanzas personales simples"
+  description="Organiza ingresos, gastos, presupuesto y metas de ahorro con Mi Comodoro, una app de finanzas personales clara y facil de usar."
+>
   <Header />
-  <Hero />
+  <main>
+    <Hero />
+    <Features />
+    <HowItWorks />
+    <Pricing />
+    <ContactCta />
+  </main>
   <Footer />
 </BaseLayout>

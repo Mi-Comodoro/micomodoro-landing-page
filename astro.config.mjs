@@ -1,28 +1,12 @@
 import { defineConfig } from 'astro/config';
 
-// https://astro.build/config
 export default defineConfig({
-  // Configuración de salida
   output: 'static',
-  
-  // Configuración de build
-  vite: {
-    ssr: {
-      external: ['svgo']
-    }
-  },
-
-  // Integrations
-  integrations: [],
-
-  // Configuración de servidor
   server: {
-    port: 3000,
-    host: true
+    host: true,
+    port: 3001,
   },
-
-  // Configuración de prefetch
   prefetch: {
-    prefetchAll: true
-  }
+    prefetchAll: true,
+  },
 });

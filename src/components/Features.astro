@@ -1,0 +1,90 @@
+---
+const features = [
+  {
+    title: 'Presupuesto vivo',
+    copy: 'Ajusta tu plan cuando cambia un ingreso, aparece un gasto o decides acelerar una meta.',
+  },
+  {
+    title: 'Categorias claras',
+    copy: 'Separa gastos fijos, variables, imprevistos y ahorro para entender donde se mueve tu dinero.',
+  },
+  {
+    title: 'Decisiones con contexto',
+    copy: 'Compara lo planeado contra lo real antes de comprometer una compra o mover una fecha de pago.',
+  },
+  {
+    title: 'Metas visibles',
+    copy: 'Convierte tus objetivos en avances mensuales, con progreso simple y accionable.',
+  },
+];
+---
+
+<section class="section features" id="beneficios">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">Beneficios</p>
+      <h2>Un tablero compacto para saber que hacer con tu dinero.</h2>
+      <p>
+        Mi Comodoro reduce la carga mental de administrar tus finanzas y te ayuda a tomar mejores decisiones sin hojas de calculo eternas.
+      </p>
+    </div>
+
+    <div class="feature-grid">
+      {features.map((feature, index) => (
+        <article class="feature-card">
+          <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+          <h3>{feature.title}</h3>
+          <p>{feature.copy}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .features {
+    background: #ffffff;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .feature-card {
+    min-height: 250px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 22px;
+    background: #ffffff;
+  }
+
+  .feature-card span {
+    color: var(--color-accent);
+    font-weight: 900;
+  }
+
+  .feature-card h3 {
+    margin: 34px 0 12px;
+    font-size: 1.22rem;
+  }
+
+  .feature-card p {
+    margin: 0;
+    color: var(--color-muted);
+    line-height: 1.65;
+  }
+
+  @media (max-width: 960px) {
+    .feature-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 620px) {
+    .feature-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

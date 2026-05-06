@@ -1,30 +1,73 @@
 ---
 ---
 
-<section class="hero" role="region" aria-label="Sección principal">
-  <div class="hero-container">
-    <div class="hero-content">
-      <h1 class="hero-title">
-        Bienvenido a <span class="highlight">Mi Comodoro</span>
-      </h1>
-      
-      <p class="hero-subtitle">
-        La landing page que te ayudará a mostrar tu producto de la mejor manera. Construida con Astro para máxima performance.
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Finanzas personales sin friccion</p>
+      <h1>Mi Comodoro ordena tu dinero antes de que el mes te ordene a ti.</h1>
+      <p class="hero-lead">
+        Planea ingresos, controla gastos y visualiza tus metas de ahorro en una sola experiencia simple, rapida y pensada para decisiones diarias.
       </p>
-      
-      <div class="hero-cta">
-        <button class="cta-primary" aria-label="Comenzar ahora">
-          Comenzar Ahora
-        </button>
-        <button class="cta-secondary" aria-label="Ver más información">
-          Más Información
-        </button>
+      <div class="hero-actions" aria-label="Acciones principales">
+        <a class="button button-primary" href="#contacto">Quiero probarlo</a>
+        <a class="button button-secondary" href="#beneficios">Ver beneficios</a>
       </div>
+      <dl class="hero-stats" aria-label="Indicadores destacados">
+        <div>
+          <dt>3 min</dt>
+          <dd>para crear tu plan mensual</dd>
+        </div>
+        <div>
+          <dt>24/7</dt>
+          <dd>claridad sobre tu presupuesto</dd>
+        </div>
+        <div>
+          <dt>100%</dt>
+          <dd>enfocado en habitos reales</dd>
+        </div>
+      </dl>
     </div>
-    
-    <div class="hero-visual">
-      <div class="hero-image-placeholder" aria-hidden="true">
-        <span>Tu imagen aquí</span>
+
+    <div class="hero-visual" aria-label="Vista previa del producto">
+      <div class="app-shell">
+        <div class="app-topbar">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="app-content">
+          <div class="balance-panel">
+            <p>Balance disponible</p>
+            <strong>$2.450.000</strong>
+            <small>+18% frente al mes anterior</small>
+          </div>
+          <div class="chart" aria-hidden="true">
+            <span style="height: 38%"></span>
+            <span style="height: 52%"></span>
+            <span style="height: 68%"></span>
+            <span style="height: 44%"></span>
+            <span style="height: 78%"></span>
+            <span style="height: 61%"></span>
+          </div>
+          <div class="task-list">
+            <div>
+              <span></span>
+              <p>Arriendo</p>
+              <strong>Pagado</strong>
+            </div>
+            <div>
+              <span></span>
+              <p>Meta vacaciones</p>
+              <strong>72%</strong>
+            </div>
+            <div>
+              <span></span>
+              <p>Gastos variables</p>
+              <strong>En rango</strong>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -32,123 +75,183 @@
 
 <style>
   .hero {
-    padding: 4rem 2rem;
-    background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
-    min-height: 600px;
-    display: flex;
-    align-items: center;
+    overflow: hidden;
+    padding: 72px 0 88px;
+    background:
+      radial-gradient(circle at 12% 18%, rgb(242 111 79 / 13%), transparent 28%),
+      linear-gradient(180deg, #fbfdfb 0%, #f3f7f2 100%);
   }
 
-  .hero-container {
-    max-width: 1200px;
-    margin: 0 auto;
+  .hero-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 0.9fr);
+    gap: 56px;
     align-items: center;
-    width: 100%;
   }
 
-  .hero-content {
+  .hero-copy h1 {
+    max-width: 780px;
+    margin: 0;
+    font-size: clamp(2.65rem, 6vw, 5.3rem);
+    line-height: 0.96;
+    letter-spacing: 0;
+  }
+
+  .hero-lead {
+    max-width: 630px;
+    margin: 24px 0 0;
+    color: var(--color-muted);
+    font-size: 1.16rem;
+    line-height: 1.75;
+  }
+
+  .hero-actions {
     display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .hero-title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    line-height: 1.2;
-    color: var(--color-text);
-  }
-
-  .highlight {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .hero-subtitle {
-    font-size: 1.125rem;
-    color: var(--color-text-light);
-    line-height: 1.8;
-  }
-
-  .hero-cta {
-    display: flex;
-    gap: 1rem;
     flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 32px;
   }
 
-  .cta-primary,
-  .cta-secondary {
-    padding: 0.875rem 2rem;
-    border-radius: 0.5rem;
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    max-width: 680px;
+    margin: 44px 0 0;
   }
 
-  .cta-primary {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    color: white;
+  .hero-stats div {
+    border-left: 3px solid var(--color-accent);
+    padding-left: 14px;
   }
 
-  .cta-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+  .hero-stats dt {
+    font-size: 1.45rem;
+    font-weight: 900;
   }
 
-  .cta-secondary {
-    background: transparent;
-    color: var(--color-primary);
-    border: 2px solid var(--color-primary);
-  }
-
-  .cta-secondary:hover {
-    background: var(--color-primary);
-    color: white;
+  .hero-stats dd {
+    margin: 4px 0 0;
+    color: var(--color-muted);
+    font-size: 0.92rem;
+    line-height: 1.45;
   }
 
   .hero-visual {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
   }
 
-  .hero-image-placeholder {
-    width: 100%;
-    aspect-ratio: 1;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    border-radius: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.25rem;
-    font-weight: 600;
-    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+  .app-shell {
+    width: min(100%, 500px);
+    margin-inline: auto;
+    overflow: hidden;
+    border: 1px solid rgb(255 255 255 / 80%);
+    border-radius: 22px;
+    background: #ffffff;
+    box-shadow: var(--shadow-soft);
   }
 
-  @media (max-width: 768px) {
-    .hero {
-      padding: 2rem 1rem;
-      min-height: auto;
-    }
+  .app-topbar {
+    display: flex;
+    gap: 8px;
+    border-bottom: 1px solid var(--color-border);
+    padding: 16px;
+    background: #f8faf8;
+  }
 
-    .hero-container {
+  .app-topbar span {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: #bcc8c0;
+  }
+
+  .app-content {
+    display: grid;
+    gap: 18px;
+    padding: 22px;
+  }
+
+  .balance-panel {
+    border-radius: 8px;
+    padding: 24px;
+    background: var(--color-brand-dark);
+    color: #ffffff;
+  }
+
+  .balance-panel p,
+  .balance-panel small {
+    margin: 0;
+    color: rgb(255 255 255 / 76%);
+  }
+
+  .balance-panel strong {
+    display: block;
+    margin: 8px 0;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    line-height: 1;
+  }
+
+  .chart {
+    display: grid;
+    height: 160px;
+    grid-template-columns: repeat(6, 1fr);
+    align-items: end;
+    gap: 10px;
+    border-radius: 8px;
+    background: var(--color-sky);
+    padding: 18px;
+  }
+
+  .chart span {
+    border-radius: 8px 8px 2px 2px;
+    background: linear-gradient(180deg, var(--color-accent), #ffd6bf);
+  }
+
+  .task-list {
+    display: grid;
+    gap: 10px;
+  }
+
+  .task-list div {
+    display: grid;
+    grid-template-columns: 12px 1fr auto;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 12px;
+  }
+
+  .task-list span {
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    background: var(--color-brand);
+  }
+
+  .task-list p,
+  .task-list strong {
+    margin: 0;
+    font-size: 0.94rem;
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid {
       grid-template-columns: 1fr;
-      gap: 2rem;
     }
 
-    .hero-cta {
-      flex-direction: column;
+    .hero {
+      padding-top: 48px;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .hero-stats {
+      grid-template-columns: 1fr;
     }
 
-    .cta-primary,
-    .cta-secondary {
+    .hero-actions .button {
       width: 100%;
     }
   }
