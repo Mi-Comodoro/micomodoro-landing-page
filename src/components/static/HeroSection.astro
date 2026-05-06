@@ -1,4 +1,6 @@
 ---
+import AppMockupHero from './AppMockupHero.astro';
+
 const appUrl = import.meta.env.PUBLIC_APP_URL ?? 'https://app.micomodoro.com';
 const ctaUrl  = `${appUrl}/auth?plan=free&ref=landing`;
 ---
@@ -57,13 +59,7 @@ const ctaUrl  = `${appUrl}/auth?plan=free&ref=landing`;
 
   <!-- App screenshot preview (placeholder que Codex reemplaza con imagen real si existe) -->
   <div class="relative mt-20 max-w-5xl mx-auto w-full z-10">
-    <div class="bg-primary-900/40 border border-white/10 rounded-2xl p-2 backdrop-blur-sm shadow-2xl">
-      <div class="bg-slate-900 rounded-xl h-64 sm:h-80 flex items-center justify-center border border-white/5">
-        <p class="text-white/20 text-sm font-mono">[ Screenshot del dashboard — reemplazar con /public/dashboard-preview.png ]</p>
-      </div>
-    </div>
-    <!-- Glow bajo la imagen -->
-    <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 w-3/4 h-16 bg-primary-600/20 blur-2xl rounded-full"></div>
+    <AppMockupHero />
   </div>
 
 </section>

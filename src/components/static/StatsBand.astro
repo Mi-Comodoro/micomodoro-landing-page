@@ -1,0 +1,22 @@
+---
+const stats = [
+  { value: '45 días', label: 'de prueba Pro gratis', icon: '🎁' },
+  { value: '∞', label: 'transacciones siempre', icon: '♾️' },
+  { value: '0', label: 'conexión bancaria', icon: '🔒' },
+  { value: '3 planes', label: 'uno para cada etapa', icon: '🚀' },
+];
+---
+
+<section class="bg-primary-950/50 border-y border-white/5 py-8 px-4 sm:px-6">
+  <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
+    {stats.map(s => (
+      <div class="text-center">
+        <div class="text-2xl mb-1">{s.icon}</div>
+        <p class="text-white font-extrabold text-xl sm:text-2xl leading-none mb-1">
+          {s.value}
+        </p>
+        <p class="text-white/40 text-xs leading-tight">{s.label}</p>
+      </div>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,152 @@
+---
+const navItems = [
+  { icon: '▣', label: 'Puente de Mando', active: true },
+  { icon: '◈', label: 'Presupuesto', active: false },
+  { icon: '◎', label: 'Transacciones', active: false },
+  { icon: '◷', label: 'Metas', active: false },
+  { icon: '◆', label: 'Analítica', active: false },
+];
+
+const scoreDimensions = [
+  { label: 'Ahorro', pct: 78, color: '#14b8a6' },
+  { label: 'Gastos', pct: 65, color: '#8b5cf6' },
+  { label: 'Metas', pct: 80, color: '#f59e0b' },
+  { label: 'Consistencia', pct: 70, color: '#3b82f6' },
+];
+
+const metrics = [
+  { label: 'Ingresos', value: '$4.200.000', color: '#14b8a6', arrow: '↑' },
+  { label: 'Gastos', value: '$2.890.000', color: '#f87171', arrow: '↓' },
+  { label: 'Ahorro', value: '$630.000', color: '#a78bfa', arrow: '→' },
+];
+
+const bars = [
+  { x: 5, bp: 42, rp: 38, color: '#0d9488' },
+  { x: 48, bp: 28, rp: 32, color: '#f87171' },
+  { x: 91, bp: 35, rp: 30, color: '#0d9488' },
+  { x: 134, bp: 20, rp: 18, color: '#0d9488' },
+  { x: 177, bp: 25, rp: 28, color: '#f87171' },
+  { x: 220, bp: 35, rp: 32, color: '#a78bfa' },
+];
+---
+
+<div class="relative w-full">
+  <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 w-2/3 h-12 bg-primary-500/20 blur-2xl rounded-full"></div>
+
+  <div class="relative bg-slate-800 rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
+    <div class="flex items-center gap-2 px-4 py-3 bg-slate-900 border-b border-white/5">
+      <span class="w-3 h-3 rounded-full bg-red-500/70"></span>
+      <span class="w-3 h-3 rounded-full bg-yellow-500/70"></span>
+      <span class="w-3 h-3 rounded-full bg-green-500/70"></span>
+      <div class="flex-1 mx-2 sm:mx-4 bg-slate-700 rounded-md px-3 py-1 text-[10px] sm:text-xs text-slate-400 font-mono truncate">
+        app.micomodoro.com/dashboard
+      </div>
+    </div>
+
+    <div class="bg-slate-900 p-3 sm:p-5 grid grid-cols-1 sm:grid-cols-[160px_1fr] lg:grid-cols-[180px_1fr] gap-4" style="min-height:340px">
+      <div class="hidden sm:flex bg-slate-800/60 rounded-xl p-3 flex-col gap-2">
+        <div class="flex items-center gap-2 mb-3 px-1">
+          <svg width="18" height="18" viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="15" stroke="#14b8a6" stroke-width="2"/>
+            <path d="M16 7L16 16L22 16" stroke="#14b8a6" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="16" cy="16" r="2.5" fill="#14b8a6"/>
+          </svg>
+          <span class="text-white text-xs font-bold">Mi Comodoro</span>
+        </div>
+
+        {navItems.map(item => (
+          <div class={`flex items-center gap-2 px-2 py-1.5 rounded-lg text-xs cursor-default ${item.active ? 'bg-primary-600 text-white' : 'text-slate-400'}`}>
+            <span class="text-[10px]">{item.icon}</span>
+            <span>{item.label}</span>
+          </div>
+        ))}
+
+        <div class="mt-auto mx-1 bg-amber-500/10 border border-amber-500/30 rounded-lg px-2 py-2 text-center">
+          <p class="text-amber-400 text-[9px] font-bold uppercase tracking-wide">Trial Pro</p>
+          <p class="text-white/40 text-[9px] mt-0.5">38 días restantes</p>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-3 min-w-0">
+        <div class="flex items-center justify-between gap-3">
+          <div>
+            <p class="text-white/40 text-[10px]">Mayo 2026</p>
+            <p class="text-white text-xs sm:text-sm font-bold">Buenos días, Miguel 👋</p>
+          </div>
+          <div class="bg-primary-600/20 border border-primary-500/30 rounded-lg px-3 py-1.5 text-center">
+            <p class="text-primary-400 text-[9px] font-bold uppercase">Salud</p>
+            <p class="text-primary-300 text-lg font-extrabold leading-none">73</p>
+            <p class="text-primary-500 text-[8px]">Bueno</p>
+          </div>
+        </div>
+
+        <div class="bg-slate-800/70 rounded-xl p-3 flex flex-col sm:flex-row items-center gap-4">
+          <svg width="110" height="62" viewBox="0 0 110 62" class="flex-shrink-0">
+            <path d="M 10 58 A 45 45 0 0 1 100 58" fill="none" stroke="#1e293b" stroke-width="10" stroke-linecap="round"/>
+            <path d="M 10 58 A 45 45 0 0 1 100 58" fill="none" stroke="url(#gaugeGrad)" stroke-width="10" stroke-linecap="round" stroke-dasharray="141.3 200" stroke-dashoffset="0"/>
+            <line x1="55" y1="58" x2="22" y2="20" stroke="#e2e8f0" stroke-width="2" stroke-linecap="round" transform="rotate(-20, 55, 58)"/>
+            <circle cx="55" cy="58" r="4" fill="#e2e8f0"/>
+            <text x="55" y="52" text-anchor="middle" fill="white" font-size="14" font-weight="800" font-family="Inter,sans-serif">73</text>
+            <defs>
+              <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#ef4444"/>
+                <stop offset="40%" stop-color="#f59e0b"/>
+                <stop offset="75%" stop-color="#14b8a6"/>
+                <stop offset="100%" stop-color="#0d9488"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="flex-1 w-full">
+            <p class="text-white text-xs font-bold mb-1">Score de Salud Financiera</p>
+            <div class="flex flex-col gap-1">
+              {scoreDimensions.map(d => (
+                <div class="flex items-center gap-2">
+                  <span class="text-white/40 text-[9px] w-16 flex-shrink-0">{d.label}</span>
+                  <div class="flex-1 h-1 bg-slate-700 rounded-full overflow-hidden">
+                    <div class="h-full rounded-full" style={`width:${d.pct}%;background-color:${d.color}`}></div>
+                  </div>
+                  <span class="text-white/50 text-[9px] w-6 text-right">{d.pct}%</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-2">
+          {metrics.map(m => (
+            <div class="bg-slate-800/70 rounded-lg p-2.5">
+              <p class="text-white/40 text-[9px] mb-1">{m.label}</p>
+              <p class="font-bold text-[11px] sm:text-xs" style={`color:${m.color}`}>
+                {m.arrow} {m.value}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div class="bg-slate-800/70 rounded-xl p-3">
+          <p class="text-white/40 text-[9px] mb-2 uppercase tracking-wider">
+            Presupuestado vs Real — Mayo
+          </p>
+          <svg width="100%" height="50" viewBox="0 0 260 50" preserveAspectRatio="none">
+            {bars.map(b => (
+              <>
+                <rect x={b.x} y={50-b.bp} width="14" height={b.bp} fill="#1e293b" rx="2"/>
+                <rect x={b.x+16} y={50-b.rp} width="14" height={b.rp} fill={b.color} rx="2" opacity="0.85"/>
+              </>
+            ))}
+          </svg>
+          <div class="flex gap-3 mt-1">
+            <div class="flex items-center gap-1">
+              <div class="w-2 h-2 rounded-sm bg-slate-700"></div>
+              <span class="text-white/30 text-[8px]">Presupuestado</span>
+            </div>
+            <div class="flex items-center gap-1">
+              <div class="w-2 h-2 rounded-sm bg-primary-600"></div>
+              <span class="text-white/30 text-[8px]">Real</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

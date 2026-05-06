@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 
+type Plan  = 'plus' | 'pro'
+type Cycle = 'monthly' | 'annual'
+
 const props = defineProps<{
   appUrl: string
-  billingCycle: 'monthly' | 'annual'
+  plan: Plan
+  billingCycle: Cycle
 }>()
 
 const emit = defineEmits<{ close: [] }>()
@@ -15,12 +19,15 @@ const cvv        = ref('')
 const loading    = ref(false)
 const done       = ref(false)
 
-const price = computed(() =>
-  props.billingCycle === 'annual' ? '$7.900 COP/mes' : '$9.900 COP/mes'
-)
-const billing = computed(() =>
-  props.billingCycle === 'annual' ? 'Facturado anualmente' : 'Facturado mensualmente'
-)
+const planNames  = { plus: 'Plus', pro: 'Pro' }
+const planPrices = {
+  plus: { monthly: '$19.900 COP', annual: '$15.900 COP' },
+  pro:  { monthly: '$34.900 COP', annual: '$27.900 COP' },
+}
+
+const planName  = computed(() => planNames[props.plan])
+const planPrice = computed(() => planPrices[props.plan][props.billingCycle])
+const billing   = computed(() => props.billingCycle === 'annual' ? 'Facturado anualmente' : 'Facturado mensualmente')
 
 function onCardNumber(e: Event) {
   const raw = (e.target as HTMLInputElement).value.replace(/\D/g, '').slice(0, 16)
@@ -37,7 +44,7 @@ async function confirm() {
   await new Promise(r => setTimeout(r, 1600))
   done.value = true
   await new Promise(r => setTimeout(r, 700))
-  const p = new URLSearchParams({ plan: 'premium', ref: 'landing', cycle: props.billingCycle })
+  const p = new URLSearchParams({ plan: props.plan, ref: 'landing', cycle: props.billingCycle })
   window.location.href = `${props.appUrl}/auth?${p.toString()}`
 }
 
@@ -53,19 +60,21 @@ function onBackdrop(e: MouseEvent) {
       @click="onBackdrop"
     >
       <div class="bg-white w-full sm:max-w-md rounded-t-3xl sm:rounded-2xl p-6 shadow-2xl">
-
-        <!-- Handle (mobile) -->
         <div class="w-10 h-1 bg-slate-200 rounded-full mx-auto mb-5 sm:hidden"></div>
 
-        <!-- Header -->
-        <div class="flex items-center justify-between mb-5">
+        <div class="flex items-start justify-between mb-5">
           <div>
-            <h3 class="font-extrabold text-slate-900 text-lg">Suscripción Premium</h3>
-            <p class="text-xs text-slate-400 mt-0.5">{{ price }} · {{ billing }}</p>
+            <h3 class="font-extrabold text-slate-900 text-lg">
+              Plan {{ planName }} — 45 días gratis
+            </h3>
+            <p class="text-xs text-slate-400 mt-0.5">
+              {{ planPrice }}/mes · {{ billing }}
+            </p>
           </div>
           <button
             @click="emit('close')"
-            class="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 transition-colors"
+            class="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 transition-colors flex-shrink-0"
+            aria-label="Cerrar modal"
           >
             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
               <path d="M1 1l12 12M13 1L1 13"/>
@@ -73,16 +82,19 @@ function onBackdrop(e: MouseEvent) {
           </button>
         </div>
 
-        <!-- Beta notice -->
-        <div class="flex gap-3 bg-amber-50 border border-amber-200 rounded-xl p-4 mb-5">
-          <span class="text-amber-500 text-lg flex-shrink-0">⚠️</span>
-          <p class="text-amber-800 text-xs leading-relaxed">
-            <strong>Versión beta.</strong> No se realizará ningún cargo real.
-            Tu período de prueba incluye <strong>todas las funciones Premium</strong>.
-          </p>
+        <div class="flex gap-3 bg-primary-50 border border-primary-200 rounded-xl p-4 mb-5">
+          <span class="text-primary-500 text-lg flex-shrink-0">🎁</span>
+          <div>
+            <p class="text-primary-800 text-xs font-bold mb-0.5">
+              45 días con acceso Pro completo, gratis.
+            </p>
+            <p class="text-primary-700 text-xs leading-relaxed">
+              Versión beta — no se realizará ningún cargo real hoy.
+              Solo queremos que lo pruebes con calma.
+            </p>
+          </div>
         </div>
 
-        <!-- Form -->
         <div class="flex flex-col gap-3 mb-5">
           <input
             v-model="cardName"
@@ -112,15 +124,14 @@ function onBackdrop(e: MouseEvent) {
             <input
               v-model="cvv"
               type="password"
+              inputmode="numeric"
               placeholder="CVV"
               maxlength="3"
-              inputmode="numeric"
               class="w-1/2 border border-slate-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-100 rounded-xl px-4 py-3 text-sm outline-none transition-all placeholder-slate-300"
             />
           </div>
         </div>
 
-        <!-- CTA -->
         <button
           @click="confirm"
           :disabled="loading || done"
@@ -132,13 +143,12 @@ function onBackdrop(e: MouseEvent) {
           </svg>
           <span v-if="loading">Procesando...</span>
           <span v-else-if="done">¡Listo! Redirigiendo a tu cuenta...</span>
-          <span v-else>Confirmar y empezar →</span>
+          <span v-else>Activar prueba gratuita de 45 días →</span>
         </button>
 
         <p class="text-center text-xs text-slate-400 mt-3">
-          Cancelás cuando quieras. Sin permanencia.
+          Sin cobros durante la prueba · Cancelás cuando quieras
         </p>
-
       </div>
     </div>
   </Teleport>

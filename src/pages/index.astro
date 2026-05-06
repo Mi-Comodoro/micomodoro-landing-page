@@ -2,10 +2,12 @@
 import BaseLayout         from '../layouts/BaseLayout.astro';
 import Navbar             from '../components/static/Navbar.astro';
 import HeroSection        from '../components/static/HeroSection.astro';
+import StatsBand          from '../components/static/StatsBand.astro';
 import RecognitionSection from '../components/static/RecognitionSection.astro';
 import SolutionSection    from '../components/static/SolutionSection.astro';
 import BenefitsSection    from '../components/static/BenefitsSection.astro';
 import HowItWorksSection  from '../components/static/HowItWorksSection.astro';
+import AppShowcase        from '../components/static/AppShowcase.astro';
 import SocialProofSection from '../components/static/SocialProofSection.astro';
 import PricingSection     from '../components/islands/PricingSection.vue';
 import CtaFinalSection    from '../components/static/CtaFinalSection.astro';
@@ -18,10 +20,12 @@ const appUrl = import.meta.env.PUBLIC_APP_URL ?? 'https://app.micomodoro.com';
   <Navbar />
   <main>
     <HeroSection />
+    <StatsBand />
     <RecognitionSection />
     <SolutionSection />
     <BenefitsSection />
     <HowItWorksSection />
+    <AppShowcase />
     <SocialProofSection />
     <PricingSection appUrl={appUrl} client:load />
     <CtaFinalSection />
