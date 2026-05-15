@@ -1,0 +1,35 @@
+name: Deploy Astro Landing (Pagina Principal)
+
+on:
+  push:
+    branches: [ develop ]
+
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted # Ejecuta tu asistente Jarvis
+    steps:
+      - name: Descargar codigo de la Landing
+        uses: actions/checkout@v4
+
+      - name: Configurar Entorno Node.js
+        run: |
+          # Obligamos a usar el Node instalado con NVM por Jarvis
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+          nvm use 22
+
+      - name: Instalar Dependencias
+        run: npm ci
+
+      - name: Compilar Proyecto Astro
+        run: npm run build # Esto genera la carpeta 'dist' con HTML puro
+
+      - name: Crear carpeta destino en la intranet
+        run: mkdir -p /var/www/intranet/landing-micomodoro
+
+      - name: Sincronizar archivos compilados al servidor
+        run: |
+          # Limpia el contenido viejo
+          rm -rf /var/www/intranet/landing-micomodoro/*
+          # Copia ÚNICAMENTE el resultado de la compilación (carpeta dist)
+          cp -r dist/* /var/www/intranet/landing-micomodoro/
