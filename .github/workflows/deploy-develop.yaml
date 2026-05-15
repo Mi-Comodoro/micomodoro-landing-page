@@ -6,7 +6,7 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: self-hosted # Ejecuta tu asistente Jarvis
+    runs-on: [self-hosted, Linux, X64]
     steps:
       - name: Descargar codigo de la Landing
         uses: actions/checkout@v4
