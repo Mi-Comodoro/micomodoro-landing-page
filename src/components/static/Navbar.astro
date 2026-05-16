@@ -1,8 +1,6 @@
 ---
 import MobileMenu from '../islands/MobileMenu.vue';
-
-const appUrl = import.meta.env.PUBLIC_APP_URL ?? 'https://app.micomodoro.com';
-const ctaUrl  = `${appUrl}/auth?plan=free&ref=landing`;
+import { CTA_URLS } from '../../config/urls';
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-primary-950/90 backdrop-blur-md border-b border-white/5">
@@ -30,7 +28,7 @@ const ctaUrl  = `${appUrl}/auth?plan=free&ref=landing`;
 
     <!-- CTA Desktop -->
     <a
-      href={ctaUrl}
+      href={CTA_URLS.free}
       class="hidden md:inline-flex items-center gap-2 bg-primary-500 hover:bg-primary-400 text-white text-sm font-bold px-5 py-2.5 rounded-xl transition-colors shadow-lg shadow-primary-900/40"
     >
       Empezar gratis
@@ -40,6 +38,6 @@ const ctaUrl  = `${appUrl}/auth?plan=free&ref=landing`;
     </a>
 
     <!-- Mobile menu island -->
-    <MobileMenu ctaUrl={ctaUrl} client:load />
+    <MobileMenu client:visible />
   </nav>
 </header>

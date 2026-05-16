@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-
-defineProps<{ ctaUrl: string }>()
+import { CTA_URLS } from '../../config/urls'
 
 const open = ref(false)
 
@@ -42,7 +41,7 @@ function close() { open.value = false }
         <a @click="close" href="#como-funciona" class="text-white/80 hover:text-white font-medium text-sm transition-colors">Cómo funciona</a>
         <a @click="close" href="#planes" class="text-white/80 hover:text-white font-medium text-sm transition-colors">Planes</a>
         <a
-          :href="ctaUrl"
+          :href="CTA_URLS.free"
           class="bg-primary-500 hover:bg-primary-400 text-white font-bold px-5 py-3 rounded-xl text-sm text-center transition-colors"
         >
           Empezar gratis →

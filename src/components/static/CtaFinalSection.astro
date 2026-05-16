@@ -1,6 +1,5 @@
 ---
-const appUrl = import.meta.env.PUBLIC_APP_URL ?? 'https://app.micomodoro.com';
-const ctaUrl  = `${appUrl}/auth?plan=free&ref=landing-cta-final`;
+import { CTA_URLS } from '../../config/urls';
 ---
 
 <section class="py-28 px-4 sm:px-6 bg-primary-950 relative overflow-hidden">
@@ -20,7 +19,7 @@ const ctaUrl  = `${appUrl}/auth?plan=free&ref=landing-cta-final`;
       Empieza ahora. Es gratis.
     </p>
     <a
-      href={ctaUrl}
+      href={CTA_URLS.free}
       class="inline-flex items-center gap-3 bg-primary-500 hover:bg-primary-400 text-white font-extrabold px-10 py-5 rounded-2xl transition-all text-lg shadow-2xl shadow-primary-900/60 hover:-translate-y-0.5 hover:shadow-primary-800/60"
     >
       Empezar mi registro gratis

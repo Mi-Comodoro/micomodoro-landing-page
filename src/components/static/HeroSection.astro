@@ -1,8 +1,6 @@
 ---
 import AppMockupHero from './AppMockupHero.astro';
-
-const appUrl = import.meta.env.PUBLIC_APP_URL ?? 'https://app.micomodoro.com';
-const ctaUrl  = `${appUrl}/auth?plan=free&ref=landing`;
+import { CTA_URLS } from '../../config/urls';
 ---
 
 <section class="min-h-screen bg-primary-950 flex flex-col items-center justify-center px-4 sm:px-6 pt-16 pb-20 relative overflow-hidden">
@@ -37,7 +35,7 @@ const ctaUrl  = `${appUrl}/auth?plan=free&ref=landing`;
     <!-- CTAs -->
     <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
       <a
-        href={ctaUrl}
+        href={CTA_URLS.free}
         class="w-full sm:w-auto bg-primary-500 hover:bg-primary-400 text-white font-bold px-8 py-4 rounded-2xl transition-all text-base shadow-xl shadow-primary-900/50 hover:shadow-primary-700/50 hover:-translate-y-0.5"
       >
         Empezar gratis — sin tarjeta

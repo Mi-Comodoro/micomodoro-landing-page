@@ -1,29 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import PaymentModal from './PaymentModal.vue'
-
-const props = defineProps<{ appUrl: string }>()
+import { CTA_URLS } from '../../config/urls'
 
 type Cycle = 'monthly' | 'annual'
-type Plan  = 'plus' | 'pro'
 
 const cycle     = ref<Cycle>('monthly')
-const showModal = ref(false)
-const selectedPlan = ref<Plan>('pro')
 
 const prices = {
   plus: { monthly: '19.900', annual: '15.900' },
   pro:  { monthly: '34.900', annual: '27.900' },
-}
-
-function goFree() {
-  const p = new URLSearchParams({ plan: 'free', ref: 'landing' })
-  window.location.href = `${props.appUrl}/auth?${p.toString()}`
-}
-
-function openModal(plan: Plan) {
-  selectedPlan.value = plan
-  showModal.value = true
 }
 </script>
 
@@ -88,12 +73,12 @@ function openModal(plan: Plan) {
             <li class="flex gap-2.5 text-slate-400"><span class="flex-shrink-0">✗</span> Presupuesto compartido</li>
             <li class="flex gap-2.5 text-slate-400"><span class="flex-shrink-0">✗</span> Exportación de reportes</li>
           </ul>
-          <button
-            @click="goFree"
-            class="w-full border-2 border-primary-600 text-primary-600 hover:bg-primary-50 font-bold py-3 rounded-xl transition-colors text-sm"
+          <a
+            :href="CTA_URLS.free"
+            class="block w-full border-2 border-primary-600 text-primary-600 hover:bg-primary-50 font-bold py-3 rounded-xl transition-colors text-sm text-center"
           >
             Empezar gratis →
-          </button>
+          </a>
         </div>
 
         <div class="bg-white border border-slate-200 rounded-2xl p-6">
@@ -118,12 +103,12 @@ function openModal(plan: Plan) {
             <li class="flex gap-2.5 text-slate-400"><span class="flex-shrink-0">✗</span> Presupuestos ilimitados</li>
             <li class="flex gap-2.5 text-slate-400"><span class="flex-shrink-0">✗</span> Simulador de escenarios</li>
           </ul>
-          <button
-            @click="openModal('plus')"
-            class="w-full bg-slate-900 hover:bg-slate-700 text-white font-bold py-3 rounded-xl transition-colors text-sm"
+          <a
+            :href="CTA_URLS.free"
+            class="block w-full bg-slate-900 hover:bg-slate-700 text-white font-bold py-3 rounded-xl transition-colors text-sm text-center"
           >
             Probar Plus 45 días gratis →
-          </button>
+          </a>
         </div>
 
         <div class="bg-primary-950 border-2 border-primary-500/60 rounded-2xl p-6 relative overflow-hidden">
@@ -153,12 +138,12 @@ function openModal(plan: Plan) {
             <li class="flex gap-2.5 text-white/90 font-medium"><span class="text-primary-400 font-bold flex-shrink-0">✓</span>CSV + PDF + Excel</li>
             <li class="flex gap-2.5 text-white/90 font-medium"><span class="text-primary-400 font-bold flex-shrink-0">✓</span>Simulador de escenarios financieros</li>
           </ul>
-          <button
-            @click="openModal('pro')"
-            class="w-full bg-primary-500 hover:bg-primary-400 text-white font-bold py-3 rounded-xl transition-all text-sm shadow-lg shadow-primary-900/50 relative z-10"
+          <a
+            :href="CTA_URLS.pro"
+            class="block w-full bg-primary-500 hover:bg-primary-400 text-white font-bold py-3 rounded-xl transition-all text-sm shadow-lg shadow-primary-900/50 relative z-10 text-center"
           >
             Probar Pro 45 días gratis →
-          </button>
+          </a>
         </div>
       </div>
 
@@ -174,12 +159,4 @@ function openModal(plan: Plan) {
       </div>
     </div>
   </section>
-
-  <PaymentModal
-    v-if="showModal"
-    :appUrl="appUrl"
-    :plan="selectedPlan"
-    :billingCycle="cycle"
-    @close="showModal = false"
-  />
 </template>
