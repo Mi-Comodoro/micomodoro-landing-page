@@ -31,7 +31,7 @@ const sortedPlans = computed(() =>
 )
 
 const ctaUrl = (plan: Plan) =>
-  `${APP_URL}/auth?plan=${plan.name.toLowerCase()}&ref=landing`
+  `${APP_URL}/?plan=${plan.name.toLowerCase()}&ref=landing`
 
 const isPopular = (plan: Plan) => plan.name.toLowerCase() === 'plus'
 const isPro = (plan: Plan) => plan.name.toLowerCase() === 'pro'
