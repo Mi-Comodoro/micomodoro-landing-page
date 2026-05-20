@@ -12,8 +12,6 @@ import SocialProofSection from '../components/static/SocialProofSection.astro';
 import PricingSection     from '../components/islands/PricingSection.vue';
 import CtaFinalSection    from '../components/static/CtaFinalSection.astro';
 import FooterSection      from '../components/static/FooterSection.astro';
-
-const appUrl = import.meta.env.PUBLIC_APP_URL ?? 'https://app.micomodoro.com';
 ---
 
 <BaseLayout>
@@ -27,7 +25,7 @@ const appUrl = import.meta.env.PUBLIC_APP_URL ?? 'https://app.micomodoro.com';
     <HowItWorksSection />
     <AppShowcase />
     <SocialProofSection />
-    <PricingSection appUrl={appUrl} client:load />
+    <PricingSection client:visible />
     <CtaFinalSection />
   </main>
   <FooterSection />
