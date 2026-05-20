@@ -41,7 +41,7 @@ function close() { open.value = false }
         <a @click="close" href="#como-funciona" class="text-slate-100 hover:text-white font-medium text-sm transition-colors">Cómo funciona</a>
         <a @click="close" href="#planes" class="text-slate-100 hover:text-white font-medium text-sm transition-colors">Planes</a>
         <a
-          :href="CTA_URLS.free"
+          :href="CTA_URLS.generic"
           class="bg-primary-200 hover:bg-primary-100 text-primary-950 font-extrabold px-5 py-3 rounded-xl text-sm text-center transition-colors"
         >
           Empezar gratis →
