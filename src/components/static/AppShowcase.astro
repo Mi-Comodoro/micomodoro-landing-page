@@ -1,4 +1,6 @@
 ---
+import { TRIAL_DAYS } from '../../config/pricing';
+
 const budgetLegend = [
   { color: '#0d9488', label: 'Necesidades', pct: '50%' },
   { color: '#8b5cf6', label: 'Gustos', pct: '30%' },
@@ -18,7 +20,7 @@ const points = [[0,45], [40,38], [80,42], [120,28], [160,22], [200,14]];
 <section class="py-24 px-4 sm:px-6 bg-slate-950 overflow-hidden">
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-16">
-      <p class="text-primary-300 text-sm font-bold uppercase tracking-widest mb-4">El producto</p>
+      <p class="text-primary-200 text-sm font-bold uppercase tracking-widest mb-4">El producto</p>
       <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Todo en un solo lugar</h2>
       <p class="text-slate-300 max-w-md mx-auto text-sm">
         Sin Excel. Sin cuadernos. Sin adivinar. Tu dinero, organizado y visible.
@@ -26,7 +28,7 @@ const points = [[0,45], [40,38], [80,42], [120,28], [160,22], [200,14]];
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="bg-slate-900 border border-white/10 rounded-2xl p-5 hover:border-primary-500/40 transition-colors">
+      <div class="bg-slate-900 border border-white/20 rounded-2xl p-5 hover:border-primary-300/60 transition-colors">
         <span class="inline-flex bg-primary-900/70 text-primary-200 text-xs font-bold px-3 py-1 rounded-full mb-4">Presupuesto</span>
         <h3 class="text-white font-bold text-lg mb-2">Sabe a donde va cada peso</h3>
         <p class="text-slate-300 text-sm mb-5 leading-relaxed">
@@ -51,7 +53,7 @@ const points = [[0,45], [40,38], [80,42], [120,28], [160,22], [200,14]];
         </div>
       </div>
 
-      <div class="bg-slate-900 border border-white/10 rounded-2xl p-5 hover:border-primary-500/40 transition-colors">
+      <div class="bg-slate-900 border border-white/20 rounded-2xl p-5 hover:border-primary-300/60 transition-colors">
         <span class="inline-flex bg-amber-900/60 text-amber-200 text-xs font-bold px-3 py-1 rounded-full mb-4">Metas de Ahorro</span>
         <h3 class="text-white font-bold text-lg mb-2">Tu ahorro crece con intereses</h3>
         <p class="text-slate-300 text-sm mb-5 leading-relaxed">
@@ -69,17 +71,17 @@ const points = [[0,45], [40,38], [80,42], [120,28], [160,22], [200,14]];
               </div>
               <div class="flex justify-between mt-1">
                 <span class="text-[10px] font-bold" style={`color:${m.color}`}>{m.current}</span>
-                <span class="text-slate-400 text-[10px]">{m.goal}</span>
+                <span class="text-slate-300 text-[10px]">{m.goal}</span>
               </div>
             </div>
           ))}
-          <p class="text-slate-400 text-[10px] text-center pt-2 border-t border-white/10">
+          <p class="text-slate-300 text-[10px] text-center pt-2 border-t border-white/10">
             Proyeccion con interes compuesto activada
           </p>
         </div>
       </div>
 
-      <div class="bg-slate-900 border border-white/10 rounded-2xl p-5 hover:border-primary-500/40 transition-colors md:col-span-2 lg:col-span-1">
+      <div class="bg-slate-900 border border-white/20 rounded-2xl p-5 hover:border-primary-300/60 transition-colors md:col-span-2 lg:col-span-1">
         <span class="inline-flex bg-violet-900/60 text-violet-200 text-xs font-bold px-3 py-1 rounded-full mb-4">Analitica</span>
         <h3 class="text-white font-bold text-lg mb-2">Entiende tus patrones de gasto</h3>
         <p class="text-slate-300 text-sm mb-5 leading-relaxed">
@@ -101,17 +103,17 @@ const points = [[0,45], [40,38], [80,42], [120,28], [160,22], [200,14]];
             </defs>
           </svg>
           <div class="flex justify-between mt-1">
-            {months.map(m => <span class="text-slate-400 text-[10px]">{m}</span>)}
+            {months.map(m => <span class="text-slate-300 text-[10px]">{m}</span>)}
           </div>
           <div class="flex items-center gap-2 mt-3 pt-2 border-t border-white/10">
             <span class="text-primary-300 text-base font-black" aria-hidden="true">+</span>
             <div>
               <p class="text-white text-xs font-bold">12 dias seguidos</p>
-              <p class="text-slate-400 text-[10px]">registrando transacciones</p>
+              <p class="text-slate-300 text-[10px]">registrando transacciones</p>
             </div>
             <div class="ml-auto bg-primary-900/50 rounded-lg px-2 py-1">
               <p class="text-primary-300 text-xs font-bold">+20%</p>
-              <p class="text-slate-400 text-[9px]">score</p>
+              <p class="text-slate-300 text-[9px]">score</p>
             </div>
           </div>
         </div>
@@ -120,7 +122,7 @@ const points = [[0,45], [40,38], [80,42], [120,28], [160,22], [200,14]];
 
     <div class="text-center mt-12">
       <p class="text-slate-300 text-sm mb-4">
-        Todo esto disponible desde el primer dia, con tu prueba de 45 dias.
+        Todo esto disponible desde el primer dia, con tu prueba de {TRIAL_DAYS} dias.
       </p>
     </div>
   </div>

@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { PLAN_PRICES, TRIAL_DAYS } from '../../config/pricing'
+import { APP_URL } from '../../config/urls'
 
 type Plan  = 'plus' | 'pro'
 type Cycle = 'monthly' | 'annual'
 
 const props = defineProps<{
-  appUrl: string
   plan: Plan
   billingCycle: Cycle
 }>()
@@ -20,13 +21,8 @@ const loading    = ref(false)
 const done       = ref(false)
 
 const planNames  = { plus: 'Plus', pro: 'Pro' }
-const planPrices = {
-  plus: { monthly: '$19.900 COP', annual: '$15.900 COP' },
-  pro:  { monthly: '$34.900 COP', annual: '$27.900 COP' },
-}
-
 const planName  = computed(() => planNames[props.plan])
-const planPrice = computed(() => planPrices[props.plan][props.billingCycle])
+const planPrice = computed(() => `$${PLAN_PRICES[props.plan][props.billingCycle]} COP`)
 const billing   = computed(() => props.billingCycle === 'annual' ? 'Facturado anualmente' : 'Facturado mensualmente')
 
 function onCardNumber(e: Event) {
@@ -44,8 +40,9 @@ async function confirm() {
   await new Promise(r => setTimeout(r, 1600))
   done.value = true
   await new Promise(r => setTimeout(r, 700))
-  const p = new URLSearchParams({ plan: props.plan, ref: 'landing', cycle: props.billingCycle })
-  window.location.href = `${props.appUrl}/auth?${p.toString()}`
+  const plan = props.plan === 'pro' ? 'pro' : 'free'
+  const p = new URLSearchParams({ plan, ref: 'landing', cycle: props.billingCycle })
+  window.location.href = `${APP_URL}/?${p.toString()}`
 }
 
 function onBackdrop(e: MouseEvent) {
@@ -65,15 +62,15 @@ function onBackdrop(e: MouseEvent) {
         <div class="flex items-start justify-between mb-5">
           <div>
             <h3 class="font-extrabold text-slate-900 text-lg">
-              Plan {{ planName }} — 45 días gratis
+              Plan {{ planName }} — {{ TRIAL_DAYS }} días gratis
             </h3>
-            <p class="text-xs text-slate-400 mt-0.5">
+            <p class="text-xs text-slate-600 mt-0.5">
               {{ planPrice }}/mes · {{ billing }}
             </p>
           </div>
           <button
             @click="emit('close')"
-            class="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 transition-colors flex-shrink-0"
+            class="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors flex-shrink-0"
             aria-label="Cerrar modal"
           >
             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
@@ -86,7 +83,7 @@ function onBackdrop(e: MouseEvent) {
           <span class="text-primary-500 text-lg flex-shrink-0">🎁</span>
           <div>
             <p class="text-primary-800 text-xs font-bold mb-0.5">
-              45 días con acceso Pro completo, gratis.
+              {{ TRIAL_DAYS }} días con acceso Pro completo, gratis.
             </p>
             <p class="text-primary-700 text-xs leading-relaxed">
               Versión beta — no se realizará ningún cargo real hoy.
@@ -143,10 +140,10 @@ function onBackdrop(e: MouseEvent) {
           </svg>
           <span v-if="loading">Procesando...</span>
           <span v-else-if="done">¡Listo! Redirigiendo a tu cuenta...</span>
-          <span v-else>Activar prueba gratuita de 45 días →</span>
+          <span v-else>Activar prueba gratuita de {{ TRIAL_DAYS }} días →</span>
         </button>
 
-        <p class="text-center text-xs text-slate-400 mt-3">
+        <p class="text-center text-xs text-slate-600 mt-3">
           Sin cobros durante la prueba · Cancelás cuando quieras
         </p>
       </div>
