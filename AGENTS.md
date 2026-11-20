@@ -4,7 +4,7 @@ Landing de Mi Comodoro: Astro estático, islas Vue 3 y Tailwind.
 
 ## Comandos
 
-- Node 22 (`.nvmrc`). Solo npm (hay `package-lock.json`).
+- Node 26 LTS (`.nvmrc`, igual que dashboard y server). Solo npm (hay `package-lock.json`).
 - `npm install` · `npm run dev` (puerto 3001) · `npm run build` (salida en `dist/`) · `npm run preview`
 - No hay tests ni lint.
 - Variables: `.env.example`.
