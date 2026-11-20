@@ -4,7 +4,7 @@ Sitio público de Mi Comodoro: presentación del producto, planes y precios, pri
 
 ## Requisitos
 
-- Node 22 (`nvm use` lee `.nvmrc`)
+- Node 26 LTS (`nvm use` lee `.nvmrc`)
 - npm
 
 ## Levantarlo
