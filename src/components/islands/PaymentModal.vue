@@ -53,7 +53,7 @@ function onBackdrop(e: MouseEvent) {
 <template>
   <Teleport to="body">
     <div
-      class="fixed inset-0 z-[100] flex items-end sm:items-center justify-center bg-black/70 backdrop-blur-sm px-0 sm:px-4"
+      class="fixed inset-0 z-100 flex items-end sm:items-center justify-center bg-black/70 backdrop-blur-sm px-0 sm:px-4"
       @click="onBackdrop"
     >
       <div class="bg-white w-full sm:max-w-md rounded-t-3xl sm:rounded-2xl p-6 shadow-2xl">
@@ -70,7 +70,7 @@ function onBackdrop(e: MouseEvent) {
           </div>
           <button
             @click="emit('close')"
-            class="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors flex-shrink-0"
+            class="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors shrink-0"
             aria-label="Cerrar modal"
           >
             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
@@ -80,7 +80,7 @@ function onBackdrop(e: MouseEvent) {
         </div>
 
         <div class="flex gap-3 bg-primary-50 border border-primary-200 rounded-xl p-4 mb-5">
-          <span class="text-primary-500 text-lg flex-shrink-0">🎁</span>
+          <span class="text-primary-500 text-lg shrink-0">🎁</span>
           <div>
             <p class="text-primary-800 text-xs font-bold mb-0.5">
               {{ TRIAL_DAYS }} días con acceso Pro completo, gratis.
