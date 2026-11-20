@@ -81,7 +81,7 @@ const bars = [
         </div>
 
         <div class="bg-slate-800/70 rounded-xl p-3 flex flex-col sm:flex-row items-center gap-4">
-          <svg width="110" height="62" viewBox="0 0 110 62" class="flex-shrink-0">
+          <svg width="110" height="62" viewBox="0 0 110 62" class="shrink-0">
             <path d="M 10 58 A 45 45 0 0 1 100 58" fill="none" stroke="#1e293b" stroke-width="10" stroke-linecap="round"/>
             <path d="M 10 58 A 45 45 0 0 1 100 58" fill="none" stroke="url(#gaugeGrad)" stroke-width="10" stroke-linecap="round" stroke-dasharray="141.3 200" stroke-dashoffset="0"/>
             <line x1="55" y1="58" x2="22" y2="20" stroke="#e2e8f0" stroke-width="2" stroke-linecap="round" transform="rotate(-20, 55, 58)"/>
@@ -101,7 +101,7 @@ const bars = [
             <div class="flex flex-col gap-1">
               {scoreDimensions.map(d => (
                 <div class="flex items-center gap-2">
-                  <span class="text-slate-200 text-[9px] w-16 flex-shrink-0">{d.label}</span>
+                  <span class="text-slate-200 text-[9px] w-16 shrink-0">{d.label}</span>
                   <div class="flex-1 h-1 bg-slate-700 rounded-full overflow-hidden">
                     <div class="h-full rounded-full" style={`width:${d.pct}%;background-color:${d.color}`}></div>
                   </div>
