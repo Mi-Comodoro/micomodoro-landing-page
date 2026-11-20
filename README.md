@@ -1,76 +1,40 @@
-# Mi Comodoro - Landing Page
+# Mi Comodoro — Landing
 
-Landing Page Oficial de Mi Comodoro
+Sitio público de Mi Comodoro: presentación del producto, planes y precios, privacidad y términos. Astro estático con islas Vue 3 y Tailwind.
 
-Mi comodoro es una landing page que se encarga de mostrar el producto a los usuarios, será construida con Astro.
+## Requisitos
 
-## 🎯 Características
+- Node 26 LTS (`nvm use` lee `.nvmrc`)
+- npm
 
-- Diseño moderno y responsive
-- Optimizado para performance
-- SEO friendly
-- Interfaz intuitiva
+## Levantarlo
 
-## 🛠️ Stack Tecnológico
-
-- **Astro** - Framework web moderno
-- **Node.js 22** - Runtime de JavaScript
-- **HTML/CSS/JavaScript** - Tecnologías web estándar
-
-## 📋 Requisitos Previos
-
-- **Node.js 22.x** o superior
-- npm o yarn
-
-## 🚀 Instalación y Configuración
-
-1. Clona el repositorio:
-```bash
-git clone https://github.com/migueljalvarez/micomodoro-landing-page.git
-cd micomodoro-landing-page
-```
-
-2. Instala las dependencias:
 ```bash
 npm install
-```
-
-3. Inicia el servidor de desarrollo:
-```bash
+cp .env.example .env
 npm run dev
 ```
 
-4. Abre tu navegador en `http://localhost:3000`
+Abre `http://localhost:3001`.
 
-## 📦 Scripts Disponibles
+## Scripts
 
-- `npm run dev` - Inicia el servidor de desarrollo
-- `npm run build` - Compila el proyecto para producción
-- `npm run preview` - Visualiza la build de producción localmente
+| Comando | Uso |
+|---|---|
+| `npm run dev` | Servidor de desarrollo (puerto 3001) |
+| `npm run build` | Genera el sitio estático en `dist/` |
+| `npm run preview` | Sirve `dist/` localmente |
 
-## 📁 Estructura del Proyecto
+No hay tests ni lint.
 
-```
-micomodoro-landing-page/
-├── src/
-│   ├── pages/
-│   ├── components/
-│   └── layouts/
-├── public/
-├── astro.config.mjs
-└── package.json
-```
+## Variables de entorno
 
-## ⚠️ Contribuciones
+Todas son `PUBLIC_*` y se incrustan al compilar: URL de la app y del sitio, precios de los planes, días de prueba y URL de la API de planes. Ver `.env.example`; si falta alguna se usa el valor por defecto del código.
 
-**Este proyecto no acepta contribuciones externas.**
+## Despliegue
 
-Si encuentras un problema o tienes una sugerencia, por favor contacta al autor directamente.
+Un push a `develop` compila el sitio y publica `dist/` (`.github/workflows/deploy-develop.yaml`).
 
-## 📧 Contacto
+## Convenciones
 
-Para más información sobre el proyecto, contacta a [migueljalvarez](https://github.com/migueljalvarez)
-
----
-
-**Nota:** Este proyecto requiere Node.js 22.x para funcionar correctamente.
+Ramas y reglas para agentes: [AGENTS.md](AGENTS.md).

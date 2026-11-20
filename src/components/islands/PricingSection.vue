@@ -173,7 +173,7 @@ onMounted(async () => {
             >
               <span
                 :class="[
-                  'flex-shrink-0 font-bold',
+                  'shrink-0 font-bold',
                   isPro(plan) ? 'text-primary-200' : 'text-primary-600'
                 ]"
               >✓</span>

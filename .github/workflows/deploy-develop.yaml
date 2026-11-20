@@ -11,12 +11,11 @@ jobs:
       - name: Descargar codigo de la Landing
         uses: actions/checkout@v4
 
-      - name: Configurar Entorno Node.js
-        run: |
-          # Obligamos a usar el Node instalado con NVM por Jarvis
-          export NVM_DIR="$HOME/.nvm"
-          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-          nvm use 22
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '26'
+          cache: 'npm'
 
       - name: Instalar Dependencias
         run: npm ci
