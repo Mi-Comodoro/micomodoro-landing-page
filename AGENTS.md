@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Landing de Mi Comodoro: Astro estático, islas Vue 3 y Tailwind.
+Landing de Mi Comodoro: Astro estático, sin frameworks de UI en el cliente. La portada (`src/pages/index.astro`) usa componentes en `src/components/v2/` y su propio CSS (`src/styles/landing.css`); las páginas legales (`privacidad`, `terminos`) usan `BaseLayout` con Tailwind.
 
 ## Comandos
 
@@ -21,5 +21,7 @@ Página: «🚀 Mi Comodoro — Project Tracker», sección «🛸 Landing». Al
 
 ## Trampas
 
-- Las variables `PUBLIC_*` se incrustan en el build estático; cambiarlas exige recompilar.
-- `deploy-develop.yaml` no define ninguna `PUBLIC_*`, así que el sitio desplegado usa los valores por defecto del código (`src/config/pricing.ts`, `src/config/urls.ts`, `PricingSection.vue`), no los de `.env.example`.
+- Las variables `PUBLIC_*` se incrustan en el build estático; cambiarlas exige recompilar. `deploy-develop.yaml` no define ninguna: sin `PUBLIC_ACCESS_URL` el formulario de acceso no envía nada y lo dice en pantalla.
+- Solo se promete lo que existe en el código. Todo límite por plan, exportación, categorías propias, varios presupuestos y conexión con Mi Despensa va como «próximamente»; sin duración de trial, sin cifras de usuarios, sin precios en COP. Toda cifra de ejemplo se rotula «ejemplo ilustrativo». Verificación detallada en la página de Notion «Review comercial y decisiones de refresh de la landing».
+- Colores: base crema, teal y verde profundo `#0c4746` (60/30/10). Los colores de datos del simulador (`--c-save`, `--c-need`, `--c-want`) siguen la semántica del dashboard; están en `landing.css` y se cambian ahí.
+- Fuentes autohospedadas con `@fontsource-variable/*` (sin llamadas a Google). Los enlaces a política y T&C apuntan a `#` hasta publicar las versiones nuevas.

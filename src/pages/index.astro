@@ -1,32 +1,41 @@
 ---
-import BaseLayout         from '../layouts/BaseLayout.astro';
-import Navbar             from '../components/static/Navbar.astro';
-import HeroSection        from '../components/static/HeroSection.astro';
-import StatsBand          from '../components/static/StatsBand.astro';
-import RecognitionSection from '../components/static/RecognitionSection.astro';
-import SolutionSection    from '../components/static/SolutionSection.astro';
-import BenefitsSection    from '../components/static/BenefitsSection.astro';
-import HowItWorksSection  from '../components/static/HowItWorksSection.astro';
-import AppShowcase        from '../components/static/AppShowcase.astro';
-import SocialProofSection from '../components/static/SocialProofSection.astro';
-import PricingSection     from '../components/islands/PricingSection.vue';
-import CtaFinalSection    from '../components/static/CtaFinalSection.astro';
-import FooterSection      from '../components/static/FooterSection.astro';
+import LandingLayout from '../layouts/LandingLayout.astro';
+import Sprite from '../components/v2/Sprite.astro';
+import Nav from '../components/v2/Nav.astro';
+import Hero from '../components/v2/Hero.astro';
+import HowItWorks from '../components/v2/HowItWorks.astro';
+import Compare from '../components/v2/Compare.astro';
+import GoalDate from '../components/v2/GoalDate.astro';
+import Includes from '../components/v2/Includes.astro';
+import Ecosystem from '../components/v2/Ecosystem.astro';
+import Plans from '../components/v2/Plans.astro';
+import Privacy from '../components/v2/Privacy.astro';
+import Faq from '../components/v2/Faq.astro';
+import Access from '../components/v2/Access.astro';
+import Footer from '../components/v2/Footer.astro';
+
+const chips = ['Sin conectar tu banco', 'Transacciones y metas ilimitadas', 'Prueba Pro con todo incluido', 'Para mayores de 18 años'];
 ---
 
-<BaseLayout>
-  <Navbar />
+<LandingLayout>
+  <Sprite />
+  <Nav />
   <main>
-    <HeroSection />
-    <StatsBand />
-    <RecognitionSection />
-    <SolutionSection />
-    <BenefitsSection />
-    <HowItWorksSection />
-    <AppShowcase />
-    <SocialProofSection />
-    <PricingSection client:visible />
-    <CtaFinalSection />
+    <Hero />
+    <section class="chips" aria-label="Datos clave" style="padding-top:0">
+      <div class="wrap">
+        <ul>{chips.map((c) => <li>{c}</li>)}</ul>
+      </div>
+    </section>
+    <HowItWorks />
+    <Compare />
+    <GoalDate />
+    <Includes />
+    <Ecosystem />
+    <Plans />
+    <Privacy />
+    <Faq />
+    <Access />
   </main>
-  <FooterSection />
-</BaseLayout>
+  <Footer />
+</LandingLayout>

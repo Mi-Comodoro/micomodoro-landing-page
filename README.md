@@ -1,6 +1,6 @@
 # Mi Comodoro — Landing
 
-Sitio público de Mi Comodoro: presentación del producto, planes y precios, privacidad y términos. Astro estático con islas Vue 3 y Tailwind.
+Sitio público de Mi Comodoro: presentación del producto, ahorro primero, funciones, ecosistema, planes en beta, preguntas, acceso a la beta, privacidad y términos. Astro estático; la portada tiene su propio CSS y las páginas legales usan Tailwind.
 
 ## Requisitos
 
@@ -29,7 +29,7 @@ No hay tests ni lint.
 
 ## Variables de entorno
 
-Todas son `PUBLIC_*` y se incrustan al compilar: URL de la app y del sitio, precios de los planes, días de prueba y URL de la API de planes. Ver `.env.example`; si falta alguna se usa el valor por defecto del código.
+Todas son `PUBLIC_*` y se incrustan al compilar: URL del sitio, endpoint del formulario de acceso (`PUBLIC_ACCESS_URL`, opcional) y versión de la política que se registra como evidencia (`PUBLIC_POLICY_VERSION`). Ver `.env.example`.
 
 ## Despliegue
 

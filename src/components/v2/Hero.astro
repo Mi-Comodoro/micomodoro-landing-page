@@ -1,0 +1,68 @@
+---
+import Check from './Check.astro';
+
+const micro = ['Prueba con todo incluido', 'Sin tarjeta', 'Sin contrato'];
+---
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="badge"><i></i>Beta cerrada · Acceso por invitación</p>
+      <h1>Primero tu ahorro. <span class="hl">Después, lo demás.</span></h1>
+      <p class="lead">
+        Mucho más que un presupuesto: tu ahorro se aparta primero, tus metas avanzan y tu salud financiera se mide.
+        Todo en un solo lugar, sin conectar tu banco.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#acceso">Pedir acceso a la beta</a>
+        <a class="btn btn-ghost" href="#como-funciona">Ver cómo funciona</a>
+      </div>
+      <p class="micro">
+        {micro.map((t) => <span><Check />{t}</span>)}
+      </p>
+    </div>
+
+    <!-- Simulador de la regla 50/30/20. Un solo control: el ingreso. -->
+    <div class="sim" aria-labelledby="sim-title">
+      <div class="sim-head"><b id="sim-title">Mira cómo se reparte tu mes</b><span>Regla 50/30/20</span></div>
+      <div>
+        <label for="inc">Tu ingreso del mes <output id="incOut" for="inc">$3.000.000</output></label>
+        <input id="inc" type="range" min="1000000" max="10000000" step="100000" value="3000000" />
+      </div>
+      <div class="sim-bar" aria-hidden="true">
+        <span class="b-save" style="width:20%">20%</span><span class="b-need" style="width:50%">50%</span><span class="b-want" style="width:30%">30%</span>
+      </div>
+      <div class="sim-rows">
+        <div class="r-save"><span>Ahorro · 20%<small>Se aparta primero</small></span><b id="gSave">$600.000</b></div>
+        <div class="r-need"><span>Necesidades · 50%<small>Arriendo, mercado, servicios</small></span><b id="gNeed">$1.500.000</b></div>
+        <div class="r-want"><span>Deseos · 30%<small>Salidas, ocio, gustos</small></span><b id="gWant">$900.000</b></div>
+      </div>
+      <div class="sim-free"><span>Te queda para gastar este mes</span><b id="free" aria-live="polite">$2.400.000</b></div>
+      <p class="sim-note">
+        La regla 50/30/20 es un punto de partida clásico para presupuestar. Ejemplo de referencia, no es asesoría financiera.
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const intl = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 });
+  // Sin el espacio que mete es-CO tras el símbolo: "$3.000.000", igual que el HTML inicial.
+  const fmt = { format: (n: number) => intl.format(n).replace(/\s/g, '') };
+  const el = (id: string) => document.getElementById(id) as HTMLElement;
+  const range = document.getElementById('inc') as HTMLInputElement | null;
+
+  const update = () => {
+    if (!range) return;
+    const income = Number(range.value);
+    const save = Math.round(income * 0.2);
+    el('incOut').textContent = fmt.format(income);
+    el('gSave').textContent = fmt.format(save);
+    el('gNeed').textContent = fmt.format(Math.round(income * 0.5));
+    el('gWant').textContent = fmt.format(Math.round(income * 0.3));
+    el('free').textContent = fmt.format(income - save);
+  };
+
+  range?.addEventListener('input', update);
+  update();
+</script>

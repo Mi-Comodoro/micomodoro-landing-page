@@ -1,0 +1,24 @@
+---
+// Navegación flotante en píldora, sticky.
+const links = [
+  { href: '#como-funciona', label: 'Cómo funciona' },
+  { href: '#diferencia', label: 'Por qué' },
+  { href: '#todo', label: 'Qué incluye' },
+  { href: '#planes', label: 'Planes' },
+  { href: '#preguntas', label: 'Preguntas' },
+];
+---
+
+<header class="nav">
+  <div class="bar">
+    <a class="logo" href="#" aria-label="Mi Comodoro, inicio">
+      <svg viewBox="0 0 1127 1118" aria-hidden="true"><use href="#mc-mark"></use></svg>Mi Comodoro
+    </a>
+    <nav aria-label="Principal">
+      <ul>
+        {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+      </ul>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="#acceso">Pedir acceso</a>
+  </div>
+</header>
