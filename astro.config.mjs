@@ -1,10 +1,9 @@
 import { defineConfig } from 'astro/config';
-import vue from '@astrojs/vue';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   output: 'static',
-  integrations: [vue()],
+  // Tailwind solo lo usan las páginas legales (BaseLayout + global.css); la portada usa landing.css.
   vite: {
     plugins: [tailwindcss()],
   },

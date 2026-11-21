@@ -1,0 +1,58 @@
+---
+// Layout de la portada v2. Solo carga landing.css y las fuentes autohospedadas (sin llamadas a Google).
+// Las páginas legales siguen usando BaseLayout + global.css.
+import '@fontsource-variable/bricolage-grotesque';
+import '@fontsource-variable/figtree';
+import '../styles/landing.css';
+import figtreeLatin from '@fontsource-variable/figtree/files/figtree-latin-wght-normal.woff2?url';
+import bricolageLatin from '@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2?url';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = 'Mi Comodoro · Primero tu ahorro',
+  description = 'Mucho más que un presupuesto: Mi Comodoro aparta primero tu ahorro, hace avanzar tus metas y mide tu salud financiera, todo en un solo lugar y sin conectar tu banco. Beta cerrada.',
+  // TODO(imagen oficial): og-image.png aún es la versión anterior; falta la de la v2.
+  ogImage = '/og-image.png',
+} = Astro.props;
+
+const siteUrl = import.meta.env.PUBLIC_SITE_URL ?? 'https://micomodoro.com';
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f8f6ef" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={siteUrl} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Mi Comodoro" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Fuentes latinas (las que usa todo el texto en español) precargadas para evitar el salto de diseño al cargarlas -->
+    <link rel="preload" as="font" type="font/woff2" href={figtreeLatin} crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href={bricolageLatin} crossorigin />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

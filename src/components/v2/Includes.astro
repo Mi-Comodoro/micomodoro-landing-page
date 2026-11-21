@@ -1,0 +1,57 @@
+---
+// Solo funciones verificadas en el código (main/master, 20 Nov 2026).
+const pillars = ['Flujo de caja', 'Ahorro', 'Gastos', 'Deudas'];
+const views = ['Salud financiera', 'Flujo de caja', 'Gastos por categoría', 'Tendencia de ahorro', 'Posición neta'];
+---
+
+<section id="todo" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Qué incluye</p>
+      <h2>Todo lo que mueve tu plata, <span class="hl">en un solo lugar.</span></h2>
+    </div>
+    <div class="bento">
+      <article class="tile t-deep span2">
+        <span class="k">Saldo disponible real</span>
+        <p class="big">$2.400.000</p>
+        <p>
+          Ingresos menos ahorros y gastos: una sola cifra que responde cuánto puedes gastar hoy. Ejemplo ilustrativo con $3.000.000 de ingreso y
+          $600.000 de ahorro, antes de gastos.
+        </p>
+      </article>
+      <article class="tile t-sun span2">
+        <span class="k">Score de salud financiera</span>
+        <h3>De 0 a 100, con cuatro pilares</h3>
+        <p>Flujo de caja, ahorro, gastos y deudas.</p>
+        <div class="tag-row">{pillars.map((p) => <span>{p}</span>)}</div>
+      </article>
+      <article class="tile">
+        <span class="k">Metas</span>
+        <h3>Con fecha y avance</h3>
+        <p>Cuánto aportaste, cuánto falta y cuándo llegarías.</p>
+      </article>
+      <article class="tile t-mint">
+        <span class="k">Grupos</span>
+        <h3>Gastos compartidos</h3>
+        <p>Un viaje, una vaca, un arriendo. Con roles y aportes.</p>
+      </article>
+      <article class="tile span2">
+        <span class="k">Deudas y plata que te deben</span>
+        <h3>Lo que debes y lo que te deben</h3>
+        <p>Cuentas por pagar con tasa de interés y proyección de la deuda. Cuentas por cobrar con reporte de antigüedad por tramos.</p>
+      </article>
+      <article class="tile">
+        <span class="k">Facturas recurrentes</span>
+        <h3>Una vez y listo</h3>
+        <p>Las registras y las importas a tu presupuesto.</p>
+      </article>
+      <article class="tile t-deep span3">
+        <span class="k">Análisis</span>
+        <h3>Tu plata en gráficas</h3>
+        <p>Cinco vistas listas, más un pronóstico de flujo de caja a 3 meses.</p>
+        <div class="tag-row">{views.map((v) => <span>{v}</span>)}</div>
+      </article>
+    </div>
+    <p class="s muted" style="margin-top:16px">Las proyecciones son estimaciones simplificadas, no una promesa de resultados.</p>
+  </div>
+</section>

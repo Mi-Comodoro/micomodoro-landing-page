@@ -1,0 +1,32 @@
+---
+import Check from './Check.astro';
+
+// Sin absolutos ("privacidad total"). La política vigente aún se está reescribiendo (revisión legal).
+const points = [
+  'No pedimos acceso a tus cuentas bancarias.',
+  'Tu contraseña se guarda protegida con hash, nunca en texto plano.',
+  'La política de privacidad explica qué datos guardamos y con quién se comparten.',
+];
+---
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="privacy">
+      <div>
+        <p class="eyebrow">Privacidad</p>
+        <h2>Tus finanzas, sin conectarlas a tu banco.</h2>
+        <p class="lead" style="margin-top:16px">Tú decides qué registras. Nosotros te contamos con claridad qué datos guardamos.</p>
+      </div>
+      <ul>
+        {
+          points.map((p) => (
+            <li>
+              <Check />
+              <span>{p}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

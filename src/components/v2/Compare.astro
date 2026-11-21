@@ -1,0 +1,138 @@
+---
+import Check from './Check.astro';
+
+// Cada pestaña: lo que pasa en una hoja o cuaderno frente a lo que hace Mi Comodoro (solo funciones verificadas).
+const tabs = [
+  {
+    id: 'p1',
+    old: ['Ahorras lo que sobra a fin de mes.', 'Cumplir depende de tu memoria y tu constancia.', 'Nada te frena si gastas lo que pensabas ahorrar.'],
+    now: [
+      'Repartes tu plan de ahorro en metas antes de empezar.',
+      'Hasta que no esté repartido el 100%, el presupuesto no se activa.',
+      'Gastas con tu saldo disponible: ingresos menos gastos y ahorros.',
+    ],
+  },
+  {
+    id: 'p2',
+    old: ['Armas las fórmulas del saldo y de cada total.', 'Las gráficas las construyes tú, una por una.', 'Interpretar si vas bien depende de tu criterio.'],
+    now: [
+      'Saldo disponible automático, siempre al día.',
+      'Un score de 0 a 100 con cuatro pilares: flujo de caja, ahorro, gastos y deudas.',
+      'Análisis listos: flujo de caja, gastos por categoría, tendencia de ahorro y posición neta.',
+    ],
+  },
+  {
+    id: 'p3',
+    old: ['Una columna de avance por meta.', 'El interés y la fecha de llegada los calculas a mano.', 'Si te atrasas, lo notas tarde.'],
+    now: [
+      'Cada meta muestra lo aportado, los intereses y lo que falta.',
+      'Proyecta cuándo llegarías con tu ritmo y el interés de tu cuenta.',
+      'Te avisa si la fecha objetivo puede no alcanzarse.',
+    ],
+  },
+  {
+    id: 'p4',
+    old: ['Un archivo compartido que alguien termina rompiendo.', 'Cada quien lleva su parte aparte.', 'Cobrar y recordar pagos es cosa de chats.'],
+    now: [
+      'Grupos con organizador, co-organizador, miembros y observadores.',
+      'Aportes y gastos del grupo, cada uno marcado como pagado o pendiente.',
+      'Amigos con @usuario y avisos en tiempo real.',
+    ],
+  },
+];
+const labels = ['Ahorrar primero', 'Saber cómo vas', 'Llegar a tus metas', 'Compartir gastos'];
+---
+
+<section id="diferencia" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Más que un presupuesto</p>
+      <h2>Una hoja guarda números. Mi Comodoro te ayuda a <span class="hl">cumplir tu plan.</span></h2>
+      <p class="lead">
+        Excel, un cuaderno o Notion sirven para anotar, y a muchas personas les funciona. Esto es lo que cambia cuando tu herramienta trabaja
+        contigo.
+      </p>
+    </div>
+
+    <div class="tabs">
+      <input type="radio" name="tab" id="t1" checked aria-label="Ahorrar primero" />
+      <input type="radio" name="tab" id="t2" aria-label="Saber cómo vas" />
+      <input type="radio" name="tab" id="t3" aria-label="Llegar a tus metas" />
+      <input type="radio" name="tab" id="t4" aria-label="Compartir gastos" />
+      <div class="tablist">
+        {labels.map((l, i) => <label for={`t${i + 1}`}>{l}</label>)}
+      </div>
+
+      <div class="panels">
+        {
+          tabs.map((t) => (
+            <div class="tp" id={t.id}>
+              <div class="tp-old">
+                <h3>En una hoja o cuaderno</h3>
+                <ul>{t.old.map((x) => <li>{x}</li>)}</ul>
+              </div>
+              <div class="tp-new">
+                <h3>En Mi Comodoro</h3>
+                <ul>
+                  {
+                    t.now.map((x) => (
+                      <li>
+                        <Check />
+                        <span>{x}</span>
+                      </li>
+                    ))
+                  }
+                </ul>
+
+                {t.id === 'p1' && (
+                  <div class="moment" role="img" aria-label="Ejemplo ilustrativo: para activar el presupuesto falta repartir el 100% del plan">
+                    <span class="mt">Para activar tu presupuesto</span>
+                    <div class="m-row"><span class="m-ok">Una cuenta de ahorro</span></div>
+                    <div class="m-row"><span class="m-ok">Tres metas creadas</span></div>
+                    <div class="m-row"><span class="m-wait">Plan repartido</span><b>80% de 100%</b></div>
+                    <div class="m-bar"><i style="width:80%"></i></div>
+                    <span class="m-btn">Activar presupuesto</span>
+                    <small>Ejemplo ilustrativo del requisito de activación.</small>
+                  </div>
+                )}
+
+                {t.id === 'p2' && (
+                  <div class="moment" role="img" aria-label="Ejemplo ilustrativo: score de salud financiera de 75 sobre 100 con cuatro pilares">
+                    <div class="m-score"><b>75</b><span>de 100 · Salud financiera</span></div>
+                    <div class="m-row"><span>Flujo de caja</span></div><div class="m-bar"><i style="width:82%"></i></div>
+                    <div class="m-row"><span>Ahorro</span></div><div class="m-bar"><i style="width:70%"></i></div>
+                    <div class="m-row"><span>Gastos</span></div><div class="m-bar"><i style="width:76%"></i></div>
+                    <div class="m-row"><span>Deudas</span></div><div class="m-bar"><i style="width:68%"></i></div>
+                    <small>Ejemplo ilustrativo.</small>
+                  </div>
+                )}
+
+                {t.id === 'p3' && (
+                  <div class="moment" role="img" aria-label="Ejemplo ilustrativo: detalle de una meta con total aportado, intereses y por alcanzar">
+                    <span class="mt">Cuota inicial de la casa</span>
+                    <div class="m-grid3">
+                      <div><span>Total aportado</span><b>$18.000.000</b></div>
+                      <div class="gold"><span>Intereses</span><b>$420.000</b></div>
+                      <div><span>Por alcanzar</span><b>$41.580.000</b></div>
+                    </div>
+                    <small>Ejemplo ilustrativo.</small>
+                  </div>
+                )}
+
+                {t.id === 'p4' && (
+                  <div class="moment" role="img" aria-label="Ejemplo ilustrativo: grupo de viaje con roles y gastos pagados o pendientes">
+                    <span class="mt">Viaje a Cartagena</span>
+                    <div class="m-chips"><span>Organizador</span><span>Co-organizador</span><span>Miembro</span><span>Observador</span></div>
+                    <div class="m-row"><span>Hospedaje</span><span class="m-pay paid">Pagado</span></div>
+                    <div class="m-row"><span>Transporte</span><span class="m-pay pend">Pendiente</span></div>
+                    <small>Ejemplo ilustrativo.</small>
+                  </div>
+                )}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,46 @@
+---
+// No se promete duración del trial ni qué pasa al terminar hasta confirmar trial_duration_days en producción.
+const faqs = [
+  {
+    q: '¿Cómo funciona la prueba?',
+    a: 'Empiezas con acceso Pro completo. Cuando te demos acceso a la beta te confirmaremos la duración y qué cambia al terminar. Tus transacciones y metas son ilimitadas.',
+  },
+  { q: '¿Tengo que pagar algo?', a: 'No. Durante la beta todo es gratis y no pedimos tarjeta.' },
+  {
+    q: '¿Se conecta con mi banco?',
+    a: 'No. Tú registras tus ingresos, gastos y ahorros. Para las proyecciones usamos referencias de tasas de interés que tú defines.',
+  },
+  {
+    q: '¿Qué datos guardan?',
+    a: 'Los de tu cuenta, como correo y nombre, y lo que tú registras: ingresos, gastos, metas y presupuestos. Si entras con Google, Google nos comparte tu correo, nombre y foto. Los detalles están en la política de privacidad.',
+  },
+  {
+    q: '¿Por qué la beta es cerrada?',
+    a: 'Estamos afinando el producto con un grupo pequeño. Pides acceso y te invitamos cuando haya cupo.',
+  },
+  {
+    q: '¿Qué es Mi Despensa?',
+    a: 'Es la aplicación del hogar para inventario y compras. Se está preparando para conectarse con Mi Comodoro: tú asignas un monto del mes y ella descuenta cada compra. Todavía no está disponible dentro de la beta.',
+  },
+  { q: '¿Quién puede usar Mi Comodoro?', a: 'Personas mayores de 18 años.' },
+];
+---
+
+<section id="preguntas" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Preguntas</p>
+      <h2>Lo que casi todos preguntan antes de entrar.</h2>
+    </div>
+    <div class="faq">
+      {
+        faqs.map((f, i) => (
+          <details open={i === 0}>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

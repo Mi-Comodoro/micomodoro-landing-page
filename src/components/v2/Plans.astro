@@ -1,0 +1,73 @@
+---
+import Check from './Check.astro';
+
+// Sin precios en COP. Los límites por plan NO se aplican hoy en el código: lo que no existe va como "próximamente".
+// Verificado hoy: 1 presupuesto por mes (el servidor responde 409 si ya hay uno) y categorías predefinidas.
+type Feature = { text: string; soon?: boolean };
+const plans: { name: string; blurb: string; featured?: boolean; features: Feature[] }[] = [
+  {
+    name: 'Gratis',
+    blurb: 'Para empezar a ordenar tu mes.',
+    features: [{ text: 'Ahorro primero y metas' }, { text: '1 presupuesto por mes' }, { text: 'Categorías predefinidas' }],
+  },
+  {
+    name: 'Plus',
+    blurb: 'Para quien necesita más de un presupuesto.',
+    featured: true,
+    features: [
+      { text: 'Varios presupuestos por mes', soon: true },
+      { text: 'Categorías propias', soon: true },
+      { text: 'Exportar tus datos', soon: true },
+    ],
+  },
+  {
+    name: 'Pro',
+    blurb: 'Para llevar todo sin límites.',
+    features: [
+      { text: 'Presupuestos sin tope', soon: true },
+      { text: 'Proyecciones a más largo plazo', soon: true },
+      { text: 'Exportar a CSV, PDF y Excel', soon: true },
+      { text: 'Conexión con Mi Despensa', soon: true },
+    ],
+  },
+];
+---
+
+<section id="planes" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Planes</p>
+      <h2>Gratis durante la beta. <span class="hl">Elige tu etapa.</span></h2>
+      <p class="lead">En todos los planes tus transacciones y tus metas son ilimitadas.</p>
+    </div>
+    <div class="plans">
+      {
+        plans.map((p) => (
+          <article class:list={['pcard', { 'feat-plan': p.featured }]}>
+            <header>
+              <h3>{p.name}</h3>
+              <p class="price">
+                $0<small>beta</small>
+              </p>
+              <p class="s muted">{p.blurb}</p>
+            </header>
+            <ul>
+              {
+                p.features.map((f) => (
+                  <li>
+                    <Check />
+                    <span>
+                      {f.text}
+                      {f.soon && <em class="soon-tag">próximamente</em>}
+                    </span>
+                  </li>
+                ))
+              }
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+    <p class="plans-note">Los límites de cada plan se definen cuando termine la beta. Hoy todo es gratis y aún no cobramos nada.</p>
+  </div>
+</section>

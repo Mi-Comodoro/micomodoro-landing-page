@@ -1,0 +1,55 @@
+---
+// "Desarrollado por": logo blanco oficial directo sobre el fondo oscuro, sin píldora.
+// TODO(legal): política y T&C apuntan a "#" hasta que existan las versiones nuevas. Correo de dominio propio: pendiente.
+const product = [
+  { href: '#como-funciona', label: 'Cómo funciona' },
+  { href: '#todo', label: 'Qué incluye' },
+  { href: '#ecosistema', label: 'Ecosistema' },
+  { href: '#preguntas', label: 'Preguntas' },
+];
+const legal = [
+  { href: '#', label: 'Política de privacidad', pending: true },
+  { href: '#', label: 'Términos y condiciones', pending: true },
+  { href: '#acceso', label: 'Contacto', pending: false },
+];
+---
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="logo" href="#" aria-label="Mi Comodoro, inicio">
+          <svg viewBox="0 0 1127 1118" aria-hidden="true"><use href="#mc-mark"></use></svg>Mi Comodoro
+        </a>
+        <p>Primero tu ahorro. Después, lo demás.</p>
+        <a class="btn btn-primary" href="#acceso">Pedir acceso a la beta</a>
+      </div>
+      <nav class="foot-col" aria-label="Producto">
+        <h3>Producto</h3>
+        <ul>{product.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+      </nav>
+      <nav class="foot-col" aria-label="Legal">
+        <h3>Legal</h3>
+        <ul>
+          {
+            legal.map((l) => (
+              <li>
+                <a href={l.href} data-pending={l.pending ? 'true' : undefined}>
+                  {l.label}
+                  {l.pending && <span class="sr-only"> (pendiente de publicar)</span>}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-bottom">
+      <p class="legal">Solo para mayores de 18 años. Mi Comodoro es una herramienta de registro personal y no ofrece asesoría financiera.</p>
+      <a class="powered" href="https://www.migueljalvarez.com/" aria-label="Desarrollado por Miguel Álvarez, Desarrollo de Software">
+        <span>Desarrollado por</span>
+        <img src="/brand/miguel-alvarez-blanco.svg" alt="" width="168" height="28" />
+      </a>
+    </div>
+  </div>
+</footer>

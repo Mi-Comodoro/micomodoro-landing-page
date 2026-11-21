@@ -1,0 +1,87 @@
+---
+// Beta cerrada: se pide acceso por invitación, no hay registro abierto.
+// TODO(pendiente): conectar el formulario. Mientras PUBLIC_ACCESS_URL no exista no se envía nada y la página lo dice.
+// TODO(legal): el enlace a la política apunta a "#" hasta publicar la política v2.
+const endpoint = import.meta.env.PUBLIC_ACCESS_URL ?? '';
+const policyVersion = import.meta.env.PUBLIC_POLICY_VERSION ?? 'pendiente';
+---
+
+<section id="acceso" style="padding-top:0">
+  <div class="wrap">
+    <div class="access">
+      <div>
+        <p class="eyebrow">Acceso a la beta</p>
+        <h2>Empieza por lo primero: <span class="hl">tu ahorro.</span></h2>
+        <p class="lead" style="margin-top:16px">Déjanos tu correo y te escribimos cuando tu invitación esté lista.</p>
+      </div>
+      <form id="form" novalidate data-endpoint={endpoint} data-policy-version={policyVersion}>
+        <div class="field">
+          <label for="email">Correo electrónico</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="tucorreo@ejemplo.com" required />
+        </div>
+        <label class="consent" for="ok">
+          <input id="ok" name="consent" type="checkbox" required />
+          <span>
+            Soy mayor de 18 años y autorizo el tratamiento de mis datos según la
+            <a class="pending-link" href="#" data-pending="politica-de-privacidad">política de privacidad</a>.
+          </span>
+        </label>
+        <button class="btn btn-primary" type="submit">Pedir acceso a la beta</button>
+        <p id="status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('form') as HTMLFormElement | null;
+  const status = document.getElementById('status') as HTMLElement;
+
+  const show = (text: string, isError = false) => {
+    status.textContent = text;
+    status.classList.toggle('err', isError);
+  };
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email') as HTMLInputElement;
+    const ok = document.getElementById('ok') as HTMLInputElement;
+
+    if (!email.value || !email.checkValidity()) {
+      show('Escribe un correo válido para continuar.', true);
+      email.focus();
+      return;
+    }
+    if (!ok.checked) {
+      show('Confirma tu autorización para continuar.', true);
+      ok.focus();
+      return;
+    }
+
+    const endpoint = form.dataset.endpoint;
+    if (!endpoint) {
+      show('Aún no estamos recibiendo solicitudes desde esta página. Estamos terminando el registro de la beta.', true);
+      return;
+    }
+
+    try {
+      // Evidencia de la autorización: fecha y versión de la política. El servidor debe sellar su propia fecha.
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          email: email.value,
+          adult: true,
+          consent: true,
+          policyVersion: form.dataset.policyVersion,
+          acceptedAt: new Date().toISOString(),
+        }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      show('Listo. Te escribiremos cuando tu invitación esté lista.');
+      form.reset();
+    } catch {
+      show('No pudimos enviar tu solicitud. Inténtalo de nuevo en unos minutos.', true);
+    }
+  });
+</script>

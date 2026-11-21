@@ -1,0 +1,38 @@
+---
+// Todas las cifras son un ejemplo. No se usa 50/30/20 en el paso 3 para no confundirlo con el reparto del ahorro.
+const steps = [
+  { title: 'Registra tu ingreso', text: 'Cuánto entra este mes. Es la base de todo.', ex: 'Ingreso: $3.000.000' },
+  {
+    title: 'Aparta primero: 50/30/20',
+    text: 'Punto de partida clásico: 50% necesidades, 30% deseos y 20% ahorro. El ahorro se separa antes de gastar.',
+    ex: 'Ahorro 20% = $600.000',
+  },
+  {
+    title: 'Crea 3 metas y reparte el 100%',
+    text: 'Cada meta recibe una parte de tu plan. Hasta que no esté repartido, no se activa.',
+    ex: 'Emergencia 360.000 · Casa 150.000 · Viaje 90.000',
+  },
+  { title: 'Activa y gasta con claridad', text: 'Registras tus gastos y ves el saldo disponible real, sin tocar tu ahorro.', ex: 'Para gastar: $2.400.000' },
+];
+---
+
+<section id="como-funciona">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Cómo funciona</p>
+      <h2>Cuatro pasos. <span class="hl">El ahorro va primero.</span></h2>
+    </div>
+    <ol class="steps">
+      {
+        steps.map((s) => (
+          <li>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+            <span class="ex">{s.ex}</span>
+          </li>
+        ))
+      }
+    </ol>
+    <p class="s muted" style="margin-top:16px">Cifras de ejemplo ilustrativo.</p>
+  </div>
+</section>
