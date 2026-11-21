@@ -16,7 +16,6 @@ interface Props {
 const {
   title = 'Mi Comodoro · Primero tu ahorro',
   description = 'Mucho más que un presupuesto: Mi Comodoro aparta primero tu ahorro, hace avanzar tus metas y mide tu salud financiera, todo en un solo lugar y sin conectar tu banco. Beta cerrada.',
-  // TODO(imagen oficial): og-image.png aún es la versión anterior; falta la de la v2.
   ogImage = '/og-image.png',
 } = Astro.props;
 
@@ -41,7 +40,7 @@ const siteUrl = import.meta.env.PUBLIC_SITE_URL ?? 'https://micomodoro.com';
     <meta property="og:image" content={`${siteUrl}${ogImage}`} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Mi Comodoro" />
+    <meta property="og:image:alt" content="Mi Comodoro: Primero tu ahorro. Después, lo demás." />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
