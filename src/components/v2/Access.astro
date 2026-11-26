@@ -19,6 +19,11 @@ const policyVersion = import.meta.env.PUBLIC_POLICY_VERSION ?? 'pendiente';
           <label for="email">Correo electrónico</label>
           <input id="email" name="email" type="email" autocomplete="email" placeholder="tucorreo@ejemplo.com" required />
         </div>
+        {/* Campo trampa: invisible para las personas; un bot lo llena y el servidor descarta la solicitud */}
+        <div aria-hidden="true" style="position:absolute; left:-9999px">
+          <label for="website">No llenar</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+        </div>
         <label class="consent" for="ok">
           <input id="ok" name="consent" type="checkbox" required />
           <span>
@@ -65,7 +70,8 @@ const policyVersion = import.meta.env.PUBLIC_POLICY_VERSION ?? 'pendiente';
     }
 
     try {
-      // Evidencia de la autorización: fecha y versión de la política. El servidor debe sellar su propia fecha.
+      // Evidencia de la autorización: la versión de la política. La fecha la pone el servidor, que rechaza
+      // cualquier campo que no espere.
       const res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
@@ -74,7 +80,7 @@ const policyVersion = import.meta.env.PUBLIC_POLICY_VERSION ?? 'pendiente';
           adult: true,
           consent: true,
           policyVersion: form.dataset.policyVersion,
-          acceptedAt: new Date().toISOString(),
+          website: (document.getElementById('website') as HTMLInputElement).value,
         }),
       });
       if (!res.ok) throw new Error(String(res.status));
